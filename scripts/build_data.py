@@ -1,0 +1,141 @@
+"""Builds data.json for Sal Chacham from the chains' price-transparency files (publishedprices.co.il).
+Usage: python3 build_data.py  -> writes data.json (+ data.min.json)
+"""
+import sys, re, json, gzip, datetime, collections, statistics
+sys.path.insert(0, '.')
+from portal import session, listfiles, get, parse
+
+# (portal user, chain key, store id, city key)
+BRANCHES = [
+    ('RamiLevi', 'rl', '041', 'reh'), ('RamiLevi', 'rl', '040', 'yav'), ('RamiLevi', 'rl', '043', 'rlz'),
+    ('yohananof', 'yoh', '031', 'reh'), ('yohananof', 'yoh', '025', 'nz'), ('yohananof', 'yoh', '016', 'gy'), ('yohananof', 'yoh', '052', 'ged'),
+    ('TivTaam', 'tt', '018', 'reh'), ('TivTaam', 'tt', '014', 'rlz'),
+    ('osherad', 'oa', '025', 'rlz'),
+    ('Keshet', 'kes', '013', 'rlz'),
+    ('freshmarket', 'lhv', '025', 'yav'), ('freshmarket', 'dudu', '010', 'by'),
+]
+NOW = datetime.datetime.now()
+STALE_DAYS = 60
+
+def kids(el):
+    return {c.tag: (c.text or '').strip() for c in el if len(c) == 0}
+
+def fnum(x, d=0.0):
+    try: return float(str(x).replace(',', '.'))
+    except Exception: return d
+
+def pdate(x):
+    try: return datetime.datetime.fromisoformat(x.replace('Z', '')[:19])
+    except Exception:
+        try: return datetime.datetime.strptime(x[:10], '%Y-%m-%d')
+        except Exception: return None
+
+def latest(files, prefix, store):
+    pat = re.compile(r'^' + prefix + r'\d+-\d+-0*' + str(int(store)) + r'-\d+', re.I)
+    c = sorted([f for f in files if pat.match(f)])
+    return c[-1] if c else None
+
+def store_meta(s, files, store):
+    st = sorted([f for f in files if f.lower().startswith('stores')])
+    root = parse(get(s, st[-1]))
+    for x in root.iter():
+        if x.tag.lower() in ('store', 'branch'):
+            d = {c.tag.lower(): (c.text or '').strip() for c in x}
+            if d.get('storeid', '').lstrip('0') == str(int(store)):
+                return d
+    return {}
+
+def parse_prices(raw):
+    root = parse(raw); out = {}
+    for it in root.iter():
+        if it.tag.lower() != 'item': continue
+        d = kids(it); code = d.get('ItemCode', '').strip()
+        price = fnum(d.get('ItemPrice'))
+        if not code or price <= 0: continue
+        ls = pdate(d.get('LastSaleDateTime', '') or '')
+        if ls and (NOW - ls).days > STALE_DAYS: continue          # phantom / not sold lately
+        out[code] = {
+            'n': re.sub(r'\s+', ' ', d.get('ItemName', '')).strip(),
+            'm': (d.get('ManufacturerName') or d.get('ManufactureName') or '').strip(),
+            'q': fnum(d.get('Quantity')), 'u': (d.get('UnitQty') or '').strip(),
+            'w': 1 if d.get('bIsWeighted', '0') in ('1', 'true') else 0,
+            'p': round(price, 2),
+            'upd': (d.get('PriceUpdateDate') or d.get('PriceUpdateTime') or '')[:16],
+        }
+    return out
+
+def parse_promos(raw, prices):
+    root = parse(raw); best = {}
+    for pr in root.iter():
+        if pr.tag.lower() != 'promotion': continue
+        d = kids(pr)
+        st = pdate(d.get('PromotionStartDateTime') or d.get('PromotionStartDate') or '')
+        en = pdate(d.get('PromotionEndDateTime') or d.get('PromotionEndDate') or '')
+        if en and en.hour == 0 and en.minute == 0 and 'T' not in (d.get('PromotionEndDate') or 'T'): en = en + datetime.timedelta(days=1)
+        if (st and st > NOW) or (en and en < NOW): continue
+        club = ''.join(x.text or '' for x in pr.iter() if x.tag.lower() == 'clubid').strip()
+        if club not in ('', '0') and 'כלל' not in club: continue          # club-only promos skipped
+        if (d.get('AdditionalIsCoupon') or '0') == '1': continue
+        desc = re.sub(r'\s+', ' ', d.get('PromotionDescription', '')).strip()
+        p_price = fnum(d.get('DiscountedPrice'), 0); p_min = fnum(d.get('MinQty'), 0)
+        for it in pr.iter():
+            if it.tag.lower() not in ('promotionitem', 'item'): continue
+            k = kids(it); code = k.get('ItemCode', '').strip()
+            if code not in prices: continue
+            reg = prices[code]['p']
+            dp = fnum(k.get('DiscountedPrice'), 0) or p_price
+            mq = fnum(k.get('MinQty'), 0) or p_min or 1
+            if dp <= 0: continue
+            w = prices[code]['w']
+            eff = dp / mq if (mq >= 2 and not w) else dp
+            if not (0.25 * reg <= eff < reg - 0.004): continue      # sanity: must be a real discount
+            cur = best.get(code)
+            if not cur or eff < cur['e']:
+                best[code] = {'e': round(eff, 2), 'mq': int(mq) if (mq >= 2 and not w) else 1, 't': round(dp, 2), 'd': desc[:60]}
+    return best
+
+def main():
+    sess = {}; stores = []; per_store = []
+    for user, chain, sid, city in BRANCHES:
+        if user not in sess:
+            s, tok = session(user); sess[user] = (s, tok, listfiles(s, tok))
+        s, tok, files = sess[user]
+        pf, pm = latest(files, 'PriceFull', sid), latest(files, 'PromoFull', sid)
+        if not pf: print('no price file', user, sid); continue
+        meta = store_meta(s, files, sid)
+        prices = parse_prices(get(s, pf))
+        promos = parse_promos(get(s, pm), prices) if pm else {}
+        ts = re.search(r'-(\d{8})-?(\d{4,6})', pf)
+        upd = datetime.datetime.strptime(ts.group(1) + ts.group(2)[:4], '%Y%m%d%H%M').isoformat() if ts else NOW.isoformat()
+        print(f'{chain}:{sid} {meta.get("storename","")} items={len(prices)} promos={len(promos)} file={pf}')
+        stores.append({'id': f'{chain}{sid}', 'chain': chain, 'sid': sid, 'city': city,
+                       'name': meta.get('storename', ''), 'addr': meta.get('address', ''), 'upd': upd})
+        per_store.append((prices, promos))
+    # union of products; name = most common
+    names = collections.defaultdict(collections.Counter); info = {}
+    for prices, _ in per_store:
+        for code, d in prices.items():
+            names[code][d['n']] += 1
+            if code not in info: info[code] = d
+    codes = sorted(names, key=lambda c: (-sum(1 for p, _ in per_store if c in p), c))
+    idx = {c: i for i, c in enumerate(codes)}
+    P = []
+    for c in codes:
+        d = info[c]
+        P.append([c, names[c].most_common(1)[0][0], d['m'], d['q'], d['u'], d['w']])
+    descs = []; didx = {}
+    S = []
+    for prices, promos in per_store:
+        arr = [0] * len(codes); pro = {}
+        for c, d in prices.items():
+            arr[idx[c]] = int(round(d['p'] * 100))
+        for c, d in promos.items():
+            if d['d'] not in didx: didx[d['d']] = len(descs); descs.append(d['d'])
+            pro[idx[c]] = [int(round(d['e'] * 100)), d['mq'], int(round(d['t'] * 100)), didx[d['d']]]
+        S.append({'p': arr, 'pr': pro})
+    data = {'gen': NOW.isoformat(timespec='minutes'), 'stores': stores, 'products': P, 'prices': S, 'promoDesc': descs}
+    json.dump(data, open('data.json', 'w'), ensure_ascii=False, separators=(',', ':'))
+    print('products', len(P), 'bytes', len(json.dumps(data, ensure_ascii=False, separators=(',', ':')).encode()))
+
+if __name__ == '__main__':
+    main()

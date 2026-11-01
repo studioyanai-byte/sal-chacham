@@ -1,0 +1,26 @@
+name: Update prices
+on:
+  schedule:
+    - cron: '17 * * * *'   # every hour
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install requests
+      - name: Build data from the chains' price-transparency files
+        working-directory: scripts
+        env: { TZ: Asia/Jerusalem }
+        run: python build_data.py && python compact.py ../data.json
+      - name: Commit if changed
+        run: |
+          git config user.name "sal-chacham-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data.json
+          git diff --cached --quiet || (git commit -m "Update prices $(TZ=Asia/Jerusalem date '+%Y-%m-%d %H:%M')" && git push)
