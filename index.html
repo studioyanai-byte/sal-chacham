@@ -85,6 +85,12 @@ h2{font-size:1.15rem;margin:0}
 .v-na{background:#4b5563}
 .v-green{background:var(--v-green)} .v-orange{background:var(--v-orange)} .v-red{background:var(--v-red)}
 .v-promo{background:var(--v-promo);border-top:.5rem solid #f5c518}
+.deal{margin-top:.6rem;background:rgba(0,0,0,.3);border:2px dashed #f5c518;border-radius:.7rem;padding:.6rem .7rem;display:flex;flex-direction:column;gap:.25rem;font-size:.92rem}
+.deal strong{font-size:1rem}.deal .dn{font-size:.8rem;opacity:.95}
+.dealbtn{align-self:flex-start;margin-top:.3rem;min-height:2.75rem;border:0;border-radius:.6rem;background:#f5c518;color:#1a1300;font-weight:800;padding:.2rem .9rem}
+.wbest .deal{background:#fff8d6;color:#3d2e00;border-color:#b38b00}
+.sprice small.pn,.li .p small.pn{color:#5c4a00;font-weight:600}
+html.hc .deal{background:#000;color:#fff;border-color:#ffeb3b} html.hc .sprice small.pn,html.hc .li .p small.pn{color:#ffeb3b!important}
 .promoTag{display:inline-block;margin-top:.5rem;background:rgba(0,0,0,.28);border-radius:.5rem;padding:.15rem .5rem;font-size:.9rem}
 .meter{display:flex;height:.5rem;margin:.8rem 0 .1rem;border-radius:99px;position:relative;direction:ltr}
 .meter i{flex:1}
@@ -384,6 +390,7 @@ he:{ name:'עברית', dir:'rtl',
  cat:{dairy:'מוצרי חלב וביצים',bakery:'לחם ומאפים',snacks:'חטיפים ומתוקים',drinks:'שתייה וקפה',pantry:'מזווה',household:'ניקיון ונייר',baby:'תינוקות',meat:'בשר ועוף',produce:'פירות וירקות',frozen:'קפואים'},
  whoH:'ברוכים הבאים! מי משתמש?', whoTxt:'כל משתמש מקבל רשימות משלו במכשיר הזה. אין צורך בסיסמה.', nameLbl:'השם שלך', enter:'כניסה', guest:'המשך בלי שם', guestName:'אורח', newUser:'+ משתמש חדש', switchedTo:'מחובר בתור {n}', userMenu:'משתמש: {n}', logout:'החלפת משתמש', shareH:'👫 שיתוף עם בן/בת הזוג', shareTxt:'שולחים קישור, והצד השני מוסיף את הרשימה אליו בלחיצה.', shareWa:'שלח בוואטסאפ', shareCopy:'העתק קישור', shareMsg:'{n} שיתף/ה איתך רשימת קניות בסל חכם:', importH:'{n} שיתף/ה איתך רשימה', importTxt:'{f} מוצרים לרשימה הקבועה ו־{i} לרשימות הקנייה.', importAdd:'הוסף לרשימות שלי', imported:'הרשימה נוספה', shareEmpty:'הרשימות ריקות – אין עדיין מה לשתף', area:'⚙️ אזור והשוואה', loading:'טוען מחירים עדכניים…', loadFail:'לא הצלחתי לטעון מחירים. בדקו את החיבור ונסו שוב.',
  multiHint:'מבצע כמות: {d}. המחיר ליחידה {p} רק בקנייה של {n} יחידות ומעלה – הגדילו את הכמות כדי לראות.', perUnitShort:'ליח׳', vatNote:'כל המחירים כוללים מע״מ, כפי שהרשתות מחויבות לפרסם.',
+ dealBadge:'מבצע: {n} יח׳ ב־{t}', saleSingle:'מבצע: {e} במקום {r}', perOneDeal:'ליח׳ אחת · המבצע רק ב־{n} יח׳', perUnitInDeal:'ליח׳ במבצע {n} ב־{t}', dealT:'מבצע כמות: {n} יחידות ב־{t}', dealNot:'המחיר שמוצג ({r}) הוא ליחידה אחת. המבצע חל רק אם קונים {n} יחידות – ואז זה {e} ליחידה.', dealYes:'המבצע חל: {e} ליחידה במקום {r}. סה״כ {t} ל־{n} יחידות.', buyDeal:'קנה {n} במבצע', dealName:'כך המבצע מופיע ברשת: "{d}"', totalFor:'סה״כ {t} ל־{n} יח׳', dealHintList:'מבצע {n} ב־{t} – חל רק מ־{n} יח׳', unitWord:'ליחידה',
  nbScan:'סריקה', nbLists:'הרשימות שלי', nbInfo:'מידע ונגישות',
  listsH:'הרשימות שלי', emptyLists:'עוד אין כלום ברשימות. סרקו מוצר והחליטו: קונים כאן, או מוסיפים לרשימה של סופר זול יותר.',
  ifHere:'אם הייתם קונים הכול בסניף שבו סרקתם: {p}', splitPay:'בפיצול הקנייה תשלמו {p} ותחסכו', storesItems:'{s} סניפים · {i} מוצרים',
@@ -452,6 +459,7 @@ ru:{ name:'Русский', dir:'ltr',
  cat:{dairy:'Молочные продукты и яйца',bakery:'Хлеб и выпечка',snacks:'Снеки и сладости',drinks:'Напитки и кофе',pantry:'Бакалея',household:'Бытовая химия и бумага',baby:'Для детей',meat:'Мясо и птица',produce:'Овощи и фрукты',frozen:'Замороженные'},
  whoH:'Добро пожаловать! Кто пользуется?', whoTxt:'У каждого пользователя свои списки на этом устройстве. Пароль не нужен.', nameLbl:'Ваше имя', enter:'Войти', guest:'Продолжить без имени', guestName:'Гость', newUser:'+ Новый пользователь', switchedTo:'Вы вошли как {n}', userMenu:'Пользователь: {n}', logout:'Сменить пользователя', shareH:'👫 Поделиться с партнёром', shareTxt:'Отправьте ссылку – второй человек добавит список к себе одним нажатием.', shareWa:'Отправить в WhatsApp', shareCopy:'Копировать ссылку', shareMsg:'{n} поделился(-ась) с вами списком покупок в «Умной корзине»:', importH:'{n} поделился(-ась) с вами списком', importTxt:'В постоянный список: {f}, в списки покупок: {i}.', importAdd:'Добавить в мои списки', imported:'Список добавлен', shareEmpty:'Списки пусты – пока нечем поделиться', area:'⚙️ Район и сравнение', loading:'Загружаю актуальные цены…', loadFail:'Не удалось загрузить цены. Проверьте подключение и попробуйте снова.',
  multiHint:'Акция на количество: {d}. Цена {p} за шт. – только при покупке от {n} шт. Увеличьте количество, чтобы увидеть.', perUnitShort:'за шт.', vatNote:'Все цены включают НДС, как сети обязаны публиковать.',
+ dealBadge:'Акция: {n} шт. за {t}', saleSingle:'Акция: {e} вместо {r}', perOneDeal:'за 1 шт. · акция только от {n} шт.', perUnitInDeal:'за шт. по акции {n} за {t}', dealT:'Акция на количество: {n} шт. за {t}', dealNot:'Показанная цена ({r}) – за 1 шт. Акция действует только при покупке {n} шт. – тогда {e} за шт.', dealYes:'Акция действует: {e} за шт. вместо {r}. Итого {t} за {n} шт.', buyDeal:'Купить {n} по акции', dealName:'Так акция указана в сети: «{d}»', totalFor:'Итого {t} за {n} шт.', dealHintList:'Акция {n} за {t} – только от {n} шт.', unitWord:'за шт.',
  nbScan:'Сканер', nbLists:'Мои списки', nbInfo:'Инфо и доступность',
  listsH:'Мои списки', emptyLists:'Списки пока пусты. Отсканируйте товар и решите: купить здесь или добавить в список более дешёвого магазина.',
  ifHere:'Если бы вы купили всё там, где сканировали: {p}', splitPay:'Разделив покупку, вы заплатите {p} и сэкономите', storesItems:'Магазинов: {s} · товаров: {i}',
@@ -520,6 +528,7 @@ am:{ name:'አማርኛ', dir:'ltr',
  cat:{dairy:'የወተት ተዋጽኦና እንቁላል',bakery:'ዳቦና መጋገሪያ',snacks:'መክሰስና ጣፋጮች',drinks:'መጠጦችና ቡና',pantry:'የጓዳ ዕቃዎች',household:'ጽዳትና ወረቀት',baby:'የሕፃናት',meat:'ሥጋና ዶሮ',produce:'አትክልትና ፍራፍሬ',frozen:'የቀዘቀዙ'},
  whoH:'እንኳን ደህና መጡ! ማን ነው የሚጠቀመው?', whoTxt:'እያንዳንዱ ተጠቃሚ በዚህ መሣሪያ ላይ የራሱ ዝርዝሮች አሉት። የይለፍ ቃል አያስፈልግም።', nameLbl:'ስምዎ', enter:'ግባ', guest:'ያለ ስም ቀጥል', guestName:'እንግዳ', newUser:'+ አዲስ ተጠቃሚ', switchedTo:'እንደ {n} ገብተዋል', userMenu:'ተጠቃሚ፦ {n}', logout:'ተጠቃሚ ቀይር', shareH:'👫 ከትዳር አጋር ጋር አጋራ', shareTxt:'ማገናኛ ይላኩ፤ ሌላው ሰው በአንድ ጠቅታ ዝርዝሩን ይጨምራል።', shareWa:'በWhatsApp ላክ', shareCopy:'ማገናኛ ቅዳ', shareMsg:'{n} በብልህ ቅርጫት የግዢ ዝርዝር አጋርቶዎታል፦', importH:'{n} ዝርዝር አጋርቶዎታል', importTxt:'ወደ ቋሚ ዝርዝር {f} ምርቶች፣ ወደ ግዢ ዝርዝሮች {i}።', importAdd:'ወደ ዝርዝሮቼ ጨምር', imported:'ዝርዝሩ ተጨምሯል', shareEmpty:'ዝርዝሮቹ ባዶ ናቸው – ገና የሚጋራ ነገር የለም', area:'⚙️ አካባቢና ማወዳደር', loading:'ወቅታዊ ዋጋዎችን በመጫን ላይ…', loadFail:'ዋጋዎችን መጫን አልተቻለም። ግንኙነቱን ፈትሸው እንደገና ይሞክሩ።',
  multiHint:'የብዛት ቅናሽ፦ {d}። የአንዱ ዋጋ {p} የሚሆነው {n} እና ከዚያ በላይ ሲገዙ ብቻ ነው – ለማየት ብዛቱን ይጨምሩ።', perUnitShort:'ለአንዱ', vatNote:'ሁሉም ዋጋዎች ተ.እ.ታን ያካትታሉ።',
+ dealBadge:'ቅናሽ፦ {n} በ{t}', saleSingle:'ቅናሽ፦ ከ{r} ይልቅ {e}', perOneDeal:'ለአንድ · ቅናሹ {n} ሲገዙ ብቻ', perUnitInDeal:'ለአንዱ በቅናሽ {n} በ{t}', dealT:'የብዛት ቅናሽ፦ {n} በ{t}', dealNot:'የሚታየው ዋጋ ({r}) ለአንድ ነው። ቅናሹ የሚሠራው {n} ሲገዙ ብቻ ነው – ያኔ ለአንዱ {e}።', dealYes:'ቅናሹ ይሠራል፦ ከ{r} ይልቅ ለአንዱ {e}። ጠቅላላ {t} ለ{n}።', buyDeal:'{n} በቅናሽ ግዛ', dealName:'በሰንሰለቱ ላይ የተጻፈው፦ «{d}»', totalFor:'ጠቅላላ {t} ለ{n}', dealHintList:'ቅናሽ {n} በ{t} – ከ{n} ጀምሮ ብቻ', unitWord:'ለአንዱ',
  nbScan:'ቅኝት', nbLists:'የእኔ ዝርዝሮች', nbInfo:'መረጃና ተደራሽነት',
  listsH:'የእኔ ዝርዝሮች', emptyLists:'ዝርዝሮቹ ገና ባዶ ናቸው። ምርት ይቃኙና ይወስኑ፦ እዚህ ይግዙ ወይም ርካሽ ሱቅ ዝርዝር ውስጥ ያስገቡ።',
  ifHere:'ሁሉንም በቃኙበት ሱቅ ቢገዙ፦ {p}', splitPay:'ግዢውን ሲከፋፍሉ {p} ይከፍላሉ፤ የሚቆጥቡት', storesItems:'{s} ሱቆች · {i} ምርቶች',
@@ -678,9 +687,18 @@ function unitPrice(p,price){ if(p.produce||!p.q||!p.u)return null; let per,lab;
   if(p.u==='g'){per=price/(p.q/100);lab='g100';} else if(p.u==='ml'){per=price/(p.q/100);lab='ml100';} else if(p.u==='kg'){per=price/p.q;lab='kg';} else if(p.u==='l'){per=price/p.q;lab='l';} else {if(p.q<=1)return null; per=price/p.q;lab='u';}
   return T('perUnit',{p:money(per),u:(I18N[L].perLabel[lab]||I18N.he.perLabel[lab])}); }
 function promoText(pr){ if(!pr)return ''; if(pr.mq>1) return T('promo').multi.replace('{n}',pr.mq).replace('{p}',money(pr.t))+' · '+money(pr.e)+' '+T('perUnitShort'); return (L==='he'&&pr.d)?pr.d:T('promo').sale; }
+function promoBadge(pa){ const pr=pa.promo; if(!pr)return ''; return pr.mq>1?T('dealBadge',{n:pr.mq,t:money(pr.t)}):T('saleSingle',{e:money(pr.e),r:money(pa.reg)}); }
+function rowNote(pa){ const pr=pa&&pa.promo; if(!pr||pr.mq<=1)return ''; return `<small class="pn">${esc(pr.applies?T('perUnitInDeal',{n:pr.mq,t:money(pr.t)}):T('perOneDeal',{n:pr.mq}))}</small>`; }
+function promoBlock(pa,q,btnId){ const pr=pa&&pa.promo; if(!pr)return '';
+  const name=pr.d?`<span class="dn">${esc(T('dealName',{d:pr.d}))}</span>`:'';
+  if(pr.mq<=1) return `<div class="deal"><strong>🏷️ ${esc(T('saleSingle',{e:money(pr.e),r:money(pa.reg)}))}</strong>${name}</div>`;
+  if(!pr.applies) return `<div class="deal"><strong>🏷️ ${esc(T('dealT',{n:pr.mq,t:money(pr.t)}))}</strong><span>${esc(T('dealNot',{r:money(pa.reg),n:pr.mq,e:money(pr.e)}))}</span>${name}<button class="dealbtn" id="${btnId}" data-mq="${pr.mq}">${esc(T('buyDeal',{n:pr.mq}))}</button></div>`;
+  return `<div class="deal"><strong>🏷️ ${esc(T('dealT',{n:pr.mq,t:money(pr.t)}))}</strong><span>${esc(T('dealYes',{e:money(pa.price),r:money(pa.reg),t:money(pa.price*q),n:q}))}</span>${name}</div>`; }
 function sIdx(sid){return STORES.findIndex(s=>s.id===sid);}
 function priceAt(pi,sid,q){ q=q||1; const si=sIdx(sid); if(si<0)return null; const c=PRICE[si][pi]; if(!c)return null; const reg=c/100; const pr=PROMO[si][pi];
-  if(pr){ const e=pr[0]/100; if(e<reg){ const promo={e,mq:pr[1],t:pr[2]/100,d:PDESC[pr[3]]||''}; promo.applies=(promo.mq<=1||q>=promo.mq); return {price:promo.applies?e:reg,reg,promo}; } }
+  if(pr){ const e=pr[0]/100; if(e<reg){ const promo={e,mq:pr[1],t:pr[2]/100,d:PDESC[pr[3]]||''}; promo.applies=(promo.mq<=1||q>=promo.mq);
+      let price=reg; if(promo.applies) price = promo.mq<=1 ? e : (Math.floor(q/promo.mq)*promo.t + (q%promo.mq)*reg)/q;
+      return {price,reg,promo}; } }
   return {price:reg,reg,promo:null}; }
 function carriers(pi){ return STORES.filter(s=>{const si=sIdx(s.id); return PRICE[si][pi]>0;}); }
 function refPrice(pi){ const a=carriers(pi).map(s=>PRICE[sIdx(s.id)][pi]/100).sort((x,y)=>x-y); if(!a.length)return 0; const m=a.length/2; return a.length%2?a[Math.floor(m)]:(a[m-1]+a[m])/2; }
@@ -871,10 +889,11 @@ function showProduct(pi,noScroll){
    <div class="verdict v-${r.k}">
      <p class="lbl" style="margin:0"><span aria-hidden="true">${r.icon}</span> <span>${esc(T('r_'+r.k))}</span> · <span>${esc(sFull(here))}</span></p>
      <h2 id="pTitle" tabindex="-1"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} <span class="size">${esc(pSize(p))}</span></h2>
-     ${hereOk?`<p class="price" style="margin:0">${money(ph.price)}${p.produce?` <span class="unit">${esc(T('perKg'))}</span>`:''}</p>
+     ${hereOk?`<p class="price" style="margin:0">${money(ph.price)} <span class="unit">${esc(p.produce?T('perKg'):T('unitWord'))}</span></p>
      ${up?`<p class="unit" style="margin:0">${esc(up)}</p>`:''}`:`<p class="price" style="margin:0;font-size:1.2rem">${esc(T('notHere'))}</p>`}
      ${r.ref?`<p class="ref" style="margin:0">${esc(T('normal',{p:money(r.ref)}))}${hereOk&&r.k!=='na'?` · <span dir="ltr">${esc(dTxt)}</span>`:''}</p>`:''}
-     ${hereOk&&ph.promo?(ph.promo.applies?`<p class="promoTag">🏷️ ${esc(promoText(ph.promo))} (${esc(T('instead',{p:money(ph.reg)}))})</p>`:`<p class="promoTag">🏷️ ${esc(T('multiHint',{d:T('promo').multi.replace('{n}',ph.promo.mq).replace('{p}',money(ph.promo.t)),p:money(ph.promo.e),n:ph.promo.mq}))}</p>`):''}
+     ${hereOk&&qty>1?`<p class="unit" style="margin:0;font-weight:700">${esc(T('totalFor',{t:money(ph.price*qty),n:qty}))}</p>`:''}
+     ${hereOk?promoBlock(ph,qty,'dealP'):''}
      <div class="meter ${r.k==='na'?'hidden':''}" aria-hidden="true"><i style="background:#c3e05a"></i><i style="background:#3fd27f"></i><i style="background:#ffb454"></i><i style="background:#ff7a72"></i><span class="pin" style="left:${pinPct}%"></span></div>
    </div>
    <div class="actions">
@@ -890,16 +909,16 @@ function showProduct(pi,noScroll){
   const far=STORES.filter(s=>s.id!==here&&s.km>R&&priceAt(pi,s.id)).map(s=>({s,...priceAt(pi,s.id,qty)})).sort((a,b)=>a.price-b.price)[0];
   if(state.far&&far&&best){const gap=best.price-far.price,pct=gap/best.price; if(pct>=0.12&&gap*qty>=3){const done=inList.some(it=>it.sid===far.s.id);
     h+=`<aside class="callout far" aria-label="${esc(T('farK'))}"><div class="k">🚗 ${esc(T('farK'))}</div>
-      <strong>${esc(sFull(far.s.id))}</strong> · ${esc(kmTxt(far.s.km))} · <strong>${money(far.price)}</strong>${far.promo?' ('+esc(promoText(far.promo))+')':''}<br>${esc(T('farTxt',{pct:Math.round(pct*100),p:money(gap)}))}
+      <strong>${esc(sFull(far.s.id))}</strong> · ${esc(kmTxt(far.s.km))} · <strong>${money(far.price)}</strong>${far.promo?' ('+esc(promoBadge(far))+')':''}<br>${esc(T('farTxt',{pct:Math.round(pct*100),p:money(gap)}))}
       <div class="l2" style="padding:0"><button class="addto" data-add="${far.s.id}" aria-pressed="${done}">${done?'✔ '+esc(T('inList')):'+ '+esc(T('addListOf',{s:sName(far.s.id)}))}<span class="sr-only"> – ${money(far.price)}</span></button>
       <a class="navl" href="${wazeUrl(far.s.id)}" target="_blank" rel="noopener" >🧭 Waze<span class="sr-only"> – ${esc(sFull(far.s.id))}</span></a></div></aside>`;}}
   h+=`<h3 class="sect" style="margin:0">${esc(T('compare',{n:inRad.length}))}</h3><ul class="stores">`;
   inRad.forEach((n,idx)=>{const diff=ph.price-n.price,isH=n.s.id===here,already=inList.some(it=>it.sid===n.s.id);
     const diffTxt=(isH||!hereOk)?'':(diff>0.005?`<small>${esc(T('saves',{p:money(diff)}))}</small>`:diff<-0.005?`<small class="neg">${esc(T('costsMore',{p:money(-diff)}))}</small>`:`<small>${esc(T('same'))}</small>`);
     h+=`<li class="store ${isH?'isHere':''}"><div class="l1"><span class="dot" style="background:${DOT[n.rt.k]}" aria-hidden="true"></span>
-      <div class="sinfo"><div class="sname">${esc(sName(n.s.id))}${isH?`<span class="badge b-here">${esc(T('youHere'))}</span>`:''}${idx===0?`<span class="badge b-best">${esc(T('best'))}</span>`:''}${n.promo?`<span class="badge b-promo">${esc(promoText(n.promo))}</span>`:''}</div>
+      <div class="sinfo"><div class="sname">${esc(sName(n.s.id))}${isH?`<span class="badge b-here">${esc(T('youHere'))}</span>`:''}${idx===0?`<span class="badge b-best">${esc(T('best'))}</span>`:''}${n.promo?`<span class="badge b-promo">${esc(promoBadge(n))}</span>`:''}</div>
       <div class="smeta">${esc(sCity(n.s.id))} · ${isH?esc(T('youHere')):esc(kmTxt(n.s.km))} · ${esc(T('r_'+n.rt.k))}</div></div>
-      <div class="sprice">${money(n.price)}${diffTxt}</div></div>
+      <div class="sprice">${money(n.price)}${rowNote(n)}${diffTxt}</div></div>
       ${isH?'':`<div class="l2"><button class="addto" data-add="${n.s.id}" aria-pressed="${already}">${already?'✔ '+esc(T('inList')):'+ '+esc(T('addList'))}<span class="sr-only"> – ${esc(sName(n.s.id))}, ${money(n.price)}</span></button>
       <a class="navl" href="${wazeUrl(n.s.id)}" target="_blank" rel="noopener" >🧭 Waze<span class="sr-only"> – ${esc(sFull(n.s.id))}</span></a>
       <a class="navl" href="${mapsUrl(n.s.id)}" target="_blank" rel="noopener" >🗺️ ${esc(T('maps'))}<span class="sr-only"> Google – ${esc(sFull(n.s.id))}</span></a></div>`}</li>`;});
@@ -907,6 +926,7 @@ function showProduct(pi,noScroll){
   h+='</article>';
   const pc=$('productCard'); pc.innerHTML=h; $('results').innerHTML='';
   $('qDec').onclick=()=>chq(-1); $('qInc').onclick=()=>chq(1);
+  const dp=$('dealP'); if(dp)dp.onclick=()=>{ qty=+dp.dataset.mq; showProduct(pi,true); const t=$('qv'); announce(T('totalFor',{t:money(priceAt(pi,state.here,qty).price*qty),n:qty})); const b2=$('productCard').querySelector('.btn.pri'); b2&&b2.focus(); };
   $('fxP').onclick=()=>{toggleFixed(pi,qty);showProduct(pi,true);$('fxP').focus();};
   $('toWhere').onclick=()=>{ go('where'); $('wq').value=pName(p); showWhere(pi); };
   pc.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addTo(b.dataset.add));
@@ -954,9 +974,9 @@ function showWhere(pi,noScroll){
     <h2 id="wTitle" tabindex="-1"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} <span class="hint" style="font-weight:400">${esc(pSize(p))}</span></h2>
     <p style="margin:.4rem 0 0;font-weight:700">🏆 ${esc(T('whereBest',{r:kmTxt(R)}))}</p>
     <p class="bs" style="margin:.1rem 0 0">${esc(sFull(b.s.id))} · ${esc(kmTxt(b.s.km))}</p>
-    <p class="bp" style="margin:0">${money(b.price)}${p.produce?` <span class="hint">${esc(T('perKg'))}</span>`:''}</p>
+    <p class="bp" style="margin:0">${money(b.price)} <span class="hint">${esc(p.produce?T('perKg'):T('unitWord'))}</span></p>${wQty>1?`<p style="margin:0;font-weight:700">${esc(T('totalFor',{t:money(b.price*wQty),n:wQty}))}</p>`:''}
     ${up?`<p class="hint" style="margin:0">${esc(up)}</p>`:''}
-    <p style="margin:.2rem 0 0"><span aria-hidden="true">${b.rt.icon}</span> ${esc(T('r_'+b.rt.k))}</p>${b.promo?`<p style="margin:.2rem 0 0">🏷️ ${esc(b.promo.applies?promoText(b.promo):T('multiHint',{d:T('promo').multi.replace('{n}',b.promo.mq).replace('{p}',money(b.promo.t)),p:money(b.promo.e),n:b.promo.mq}))}</p>`:''}
+    <p style="margin:.2rem 0 0"><span aria-hidden="true">${b.rt.icon}</span> ${esc(T('r_'+b.rt.k))}</p>${promoBlock(b,wQty,'dealW')}
     ${rows.length>1?`<p class="hint" style="margin:.3rem 0 0">${esc(T('rangeTxt',{lo:money(b.price),hi:money(hi.price),d:money(hi.price-b.price),pct:Math.round((hi.price-b.price)/hi.price*100)}))}</p>`:''}
     ${b.s.id!==here&&hpa&&hp>b.price?`<p style="margin:.3rem 0 0;font-weight:700;color:var(--brand-d)">${esc(T('vsYour',{s:sName(here),p:money(hp-b.price)}))}</p>`:''}
     <div class="l2" style="padding:0;margin-top:.6rem">
@@ -968,18 +988,19 @@ function showWhere(pi,noScroll){
     </div></div>`;
   const far=STORES.filter(s=>s.km>R&&s.id!==here&&priceAt(pi,s.id)).map(s=>({s,...priceAt(pi,s.id,wQty)})).sort((a,c)=>a.price-c.price)[0];
   if(state.far&&far){const gap=b.price-far.price,pct=gap/b.price; if(pct>=0.12&&gap*wQty>=3){const done=inList.some(it=>it.sid===far.s.id);
-    h+=`<aside class="callout far" aria-label="${esc(T('farK'))}"><div class="k">🚗 ${esc(T('farK'))}</div><strong>${esc(sFull(far.s.id))}</strong> · ${esc(kmTxt(far.s.km))} · <strong>${money(far.price)}</strong>${far.promo?' ('+esc(promoText(far.promo))+')':''}<br>${esc(T('farTxt',{pct:Math.round(pct*100),p:money(gap)}))}
+    h+=`<aside class="callout far" aria-label="${esc(T('farK'))}"><div class="k">🚗 ${esc(T('farK'))}</div><strong>${esc(sFull(far.s.id))}</strong> · ${esc(kmTxt(far.s.km))} · <strong>${money(far.price)}</strong>${far.promo?' ('+esc(promoBadge(far))+')':''}<br>${esc(T('farTxt',{pct:Math.round(pct*100),p:money(gap)}))}
       <div class="l2" style="padding:0"><button class="addto" data-add="${far.s.id}" aria-pressed="${done}">${done?'✔ '+esc(T('inList')):'+ '+esc(T('addListOf',{s:sName(far.s.id)}))}<span class="sr-only"> – ${money(far.price)}</span></button><a class="navl" href="${wazeUrl(far.s.id)}" target="_blank" rel="noopener">🧭 Waze<span class="sr-only"> – ${esc(sFull(far.s.id))}</span></a></div></aside>`;}}
   h+=`<h3 class="sect" style="margin:0">${esc(T('rankList',{n:rows.length}))}</h3><ol class="stores" style="list-style:none">`;
   rows.forEach((n,idx)=>{const already=inList.some(it=>it.sid===n.s.id), diff=n.price-b.price;
     h+=`<li class="store ${n.s.id===here?'isHere':''}"><div class="l1"><span class="rank" aria-hidden="true">${idx+1}</span><span class="dot" style="background:${DOT[n.rt.k]}" aria-hidden="true"></span>
-      <div class="sinfo"><div class="sname">${esc(sName(n.s.id))}${n.s.id===here?`<span class="badge b-here">${esc(T('youHere'))}</span>`:''}${idx===0?`<span class="badge b-best">${esc(T('best'))}</span>`:''}${n.promo?`<span class="badge b-promo">${esc(promoText(n.promo))}</span>`:''}</div>
+      <div class="sinfo"><div class="sname">${esc(sName(n.s.id))}${n.s.id===here?`<span class="badge b-here">${esc(T('youHere'))}</span>`:''}${idx===0?`<span class="badge b-best">${esc(T('best'))}</span>`:''}${n.promo?`<span class="badge b-promo">${esc(promoBadge(n))}</span>`:''}</div>
       <div class="smeta">${esc(sCity(n.s.id))} · ${esc(kmTxt(n.s.km))} · ${esc(T('r_'+n.rt.k))}</div></div>
-      <div class="sprice">${money(n.price)}${idx>0&&diff>0.005?`<small class="neg">${esc(T('costsMore',{p:money(diff)}))}</small>`:''}</div></div>
+      <div class="sprice">${money(n.price)}${rowNote(n)}${idx>0&&diff>0.005?`<small class="neg">${esc(T('costsMore',{p:money(diff)}))}</small>`:''}</div></div>
       <div class="l2"><button class="addto" data-add="${n.s.id}" aria-pressed="${already}">${already?'✔ '+esc(T('inList')):'+ '+esc(T('addList'))}<span class="sr-only"> – ${esc(sName(n.s.id))}, ${money(n.price)}</span></button>
       <a class="navl" href="${wazeUrl(n.s.id)}" target="_blank" rel="noopener">🧭 Waze<span class="sr-only"> – ${esc(sFull(n.s.id))}</span></a></div></li>`;});
   h+=`</ol><div style="padding:.8rem"><button class="lnk" id="wBack">← ${esc(T('back'))}</button></div></article>`;
   const wc=$('whereCard'); wc.innerHTML=h; $('wRes').innerHTML=''; $('wCount').textContent='';
+  const dw=$('dealW'); if(dw)dw.onclick=()=>{ wQty=+dw.dataset.mq; showWhere(pi,true); announce(T('totalFor',{t:money(cheapestIn(pi,state.radius,wQty)[0].price*wQty),n:wQty})); const b2=$('whereCard').querySelector('[data-add]'); b2&&b2.focus(); };
   $('wDec').onclick=()=>{wQty=Math.max(1,wQty-1);showWhere(pi,true);$('wDec').focus();};
   $('wInc').onclick=()=>{wQty=Math.min(99,wQty+1);showWhere(pi,true);$('wInc').focus();};
   wc.querySelectorAll('[data-add]').forEach(x=>x.onclick=()=>{ const q0=qty; qty=wQty; addTo(x.dataset.add,pi,true); qty=q0; });
@@ -1045,7 +1066,7 @@ function renderLists(){
     h+=`<section class="lst" aria-labelledby="lh-${sid}"><div class="lhead"><h3 id="lh-${sid}">${isH?'🛒 '+esc(T('cartHere',{s:sName(sid)})):'📋 '+esc(T('listOf',{s:sName(sid)}))}</h3><div class="m">${esc(sCity(sid))} · ${isH?esc(T('youHere')):esc(kmTxt(storeObj(sid).km))} · ${esc(T('items',{n:g.length}))}</div></div><ul class="items">`;
     g.forEach(([it,ix])=>{const p=PRODUCTS[it.pid],pr=pp(it.pid,sid,it.qty)||0,isv=itemSaving(it);
       h+=`<li class="li ${it.got?'got':''}"><label><input type="checkbox" data-got="${ix}" ${it.got?'checked':''} aria-label="${esc(T('got',{n:pName(p)}))}"><span><span class="nm"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} ×${it.qty}</span><small>${esc(pSize(p))}${it.fromSid!==sid?' · '+esc(T('scannedAt',{s:sName(it.fromSid)})):''}</small></span></label>
-        <div class="p">${money(pr*it.qty)}${isv>0.005?`<small>${esc(T('saved',{p:money(isv)}))}</small>`:''}</div>
+        <div class="p">${money(pr*it.qty)}${isv>0.005?`<small>${esc(T('saved',{p:money(isv)}))}</small>`:''}${(()=>{const pa=priceAt(it.pid,sid,it.qty); return pa&&pa.promo&&pa.promo.mq>1?`<small class="pn">${esc(pa.promo.applies?T('perUnitInDeal',{n:pa.promo.mq,t:money(pa.promo.t)}):T('dealHintList',{n:pa.promo.mq,t:money(pa.promo.t)}))}</small>`:'';})()}</div>
         <button class="x" data-rm="${ix}" aria-label="${esc(T('remove',{n:pName(p)}))}">✕</button></li>`;});
     h+='</ul>';
     if(!isH){const ok=sv>=15; h+=`<div class="worth ${ok?'ok':'meh'}">${ok?'👍 '+esc(T('worthOk',{p:money(sv),km:kmTxt(storeObj(sid).km)})):'🤔 '+esc(T('worthMeh',{p:money(sv),km:kmTxt(storeObj(sid).km)}))+` <button class="lnk" data-back="${sid}">${esc(T('buyAllHere'))}</button>`}</div>`;}
