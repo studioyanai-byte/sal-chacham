@@ -94,17 +94,52 @@ def parse_promos(raw, prices):
                 best[code] = {'e': round(eff, 2), 'mq': int(mq) if (mq >= 2 and not w) else 1, 't': round(dp, 2), 'd': desc[:60]}
     return best
 
+def load_previous(path):
+    """Previous compact data.json -> {store_id: (meta, prices, promos)} to carry over branches whose file is missing right now."""
+    try: d = json.load(open(path, encoding='utf-8'))
+    except Exception: return {}
+    lines = d['P'].split('\n'); out = {}
+    for j, st in enumerate(d['stores']):
+        arr = d['S'][j].split(','); prices = {}
+        for i, v in enumerate(arr):
+            if not v: continue
+            c, n, m, q, u, w = (lines[i].split('|') + ['']*6)[:6]
+            prices[c] = {'n': n, 'm': m, 'q': fnum(q), 'u': u, 'w': 1 if w == '1' else 0, 'p': int(v, 16)/100, 'upd': ''}
+        promos = {}
+        for k, v in d['PR'][j].items():
+            c = lines[int(k)].split('|')[0]
+            if c in prices: promos[c] = {'e': v[0]/100, 'mq': v[1], 't': v[2]/100, 'd': d['D'][v[3]]}
+        out[st['chain'] + st['sid']] = (st, prices, promos)
+    return out
+
 def main():
+    prev = load_previous(sys.argv[1] if len(sys.argv) > 1 else '../data.json')
     sess = {}; stores = []; per_store = []
     for user, chain, sid, city in BRANCHES:
         if user not in sess:
-            s, tok = session(user); sess[user] = (s, tok, listfiles(s, tok))
+            try:
+                s, tok = session(user); sess[user] = (s, tok, listfiles(s, tok) if s else [])
+            except Exception as e:
+                print('login/list failed', user, e); sess[user] = (None, None, [])
         s, tok, files = sess[user]
         pf, pm = latest(files, 'PriceFull', sid), latest(files, 'PromoFull', sid)
-        if not pf: print('no price file', user, sid); continue
-        meta = store_meta(s, files, sid)
-        prices = parse_prices(get(s, pf))
-        promos = parse_promos(get(s, pm), prices) if pm else {}
+        if not pf:
+            old = prev.get(f'{chain}{sid}')
+            if old:
+                st, prices, promos = old; st = dict(st); st['stale'] = True
+                print(f'{chain}:{sid} no file now – carried over {len(prices)} items from {st.get("upd")}')
+                stores.append(st); per_store.append((prices, promos))
+            else: print('no price file', user, sid)
+            continue
+        try:
+            meta = store_meta(s, files, sid)
+            prices = parse_prices(get(s, pf))
+            promos = parse_promos(get(s, pm), prices) if pm else {}
+        except Exception as e:
+            print('download failed', chain, sid, e); old = prev.get(f'{chain}{sid}')
+            if old:
+                st, prices, promos = old; st = dict(st); st['stale'] = True; stores.append(st); per_store.append((prices, promos))
+            continue
         ts = re.search(r'-(\d{8})-?(\d{4,6})', pf)
         upd = datetime.datetime.strptime(ts.group(1) + ts.group(2)[:4], '%Y%m%d%H%M').isoformat() if ts else NOW.isoformat()
         print(f'{chain}:{sid} {meta.get("storename","")} items={len(prices)} promos={len(promos)} file={pf}')

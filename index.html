@@ -169,6 +169,17 @@ html.hc .wbest{background:#000;color:#fff;border-bottom:2px solid #fff} html.hc 
 .sugg [role=option] .on{flex:1;min-width:0}.sugg [role=option] small{display:block;color:var(--muted);font-size:.78rem}
 .sugg [role=option][aria-selected=true],.sugg [role=option]:hover{background:#e3f1e8;outline:2px solid var(--brand);outline-offset:-2px}
 html.hc .sugg{background:#000;border:2px solid #fff} html.hc .sugg [role=option] small[style]{color:#8ef0b6!important} html.hc .sugg [role=option] small,html.hc .sugg .gh{color:#fff} html.hc .sugg [role=option][aria-selected=true]{background:#333;outline-color:#ffeb3b}
+.aside{display:block;flex-basis:100%;order:5;color:var(--v-red);font-weight:800;font-size:.82rem;margin-top:.15rem}
+.li{flex-wrap:wrap}
+.fin{margin:0 .9rem .9rem;border:2px solid var(--brand);border-radius:.9rem;padding:.8rem}
+.fin .opt{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.3rem;padding:.55rem .6rem;border-radius:.6rem;background:#f4f8f5;margin-bottom:.4rem}
+.fin .opt b{font-size:1.15rem}.fin .opt small{flex-basis:100%;color:var(--brand-d);font-weight:800}
+.fin .opt.best{background:#e3f1e8;border:1.5px solid var(--brand)}
+html.hc .fin,html.hc .fin .opt{background:#000;color:#fff;border-color:#fff} html.hc .aside{color:#ff8a80} html.hc .fin .opt small{color:#8ef0b6}
+.homec{border:2px solid var(--brand,#0b6b3a)}
+.homeh{margin:0;font-size:1.05rem}
+.online{margin-top:.6rem;padding:.6rem;border:1.5px dashed #8a968f;border-radius:.7rem}
+html.hc .online{border-color:#fff}
 .empty{text-align:center;color:var(--muted);padding:2.5rem 1rem}
 .confirm{margin-top:.6rem;padding:.8rem;border:2px solid var(--v-red);border-radius:.8rem;background:#fff}
 .confirm .btn.del{background:var(--v-red);color:#fff}
@@ -276,6 +287,7 @@ html.nomo *{animation:none!important;transition:none!important;scroll-behavior:a
 
   <main id="main" tabindex="-1">
     <section id="tab-scan" aria-labelledby="scanH">
+      <div class="box homec" id="homeCard" role="region" aria-labelledby="homeH"></div>
       <div class="box">
         <h2 id="scanH" class="sr-only"></h2>
         <input type="file" id="cam" accept="image/*" capture="environment" class="vh">
@@ -391,6 +403,9 @@ he:{ name:'עברית', dir:'rtl',
  whoH:'ברוכים הבאים! מי משתמש?', whoTxt:'כל משתמש מקבל רשימות משלו במכשיר הזה. אין צורך בסיסמה.', nameLbl:'השם שלך', enter:'כניסה', guest:'המשך בלי שם', guestName:'אורח', newUser:'+ משתמש חדש', switchedTo:'מחובר בתור {n}', userMenu:'משתמש: {n}', logout:'החלפת משתמש', shareH:'👫 שיתוף עם בן/בת הזוג', shareTxt:'שולחים קישור, והצד השני מוסיף את הרשימה אליו בלחיצה.', shareWa:'שלח בוואטסאפ', shareCopy:'העתק קישור', shareMsg:'{n} שיתף/ה איתך רשימת קניות בסל חכם:', importH:'{n} שיתף/ה איתך רשימה', importTxt:'{f} מוצרים לרשימה הקבועה ו־{i} לרשימות הקנייה.', importAdd:'הוסף לרשימות שלי', imported:'הרשימה נוספה', shareEmpty:'הרשימות ריקות – אין עדיין מה לשתף', area:'⚙️ אזור והשוואה', loading:'טוען מחירים עדכניים…', loadFail:'לא הצלחתי לטעון מחירים. בדקו את החיבור ונסו שוב.',
  multiHint:'מבצע כמות: {d}. המחיר ליחידה {p} רק בקנייה של {n} יחידות ומעלה – הגדילו את הכמות כדי לראות.', perUnitShort:'ליח׳', vatNote:'כל המחירים כוללים מע״מ, כפי שהרשתות מחויבות לפרסם.',
  dealBadge:'מבצע: {n} יח׳ ב־{t}', saleSingle:'מבצע: {e} במקום {r}', perOneDeal:'ליח׳ אחת · המבצע רק ב־{n} יח׳', perUnitInDeal:'ליח׳ במבצע {n} ב־{t}', dealT:'מבצע כמות: {n} יחידות ב־{t}', dealNot:'המחיר שמוצג ({r}) הוא ליחידה אחת. המבצע חל רק אם קונים {n} יחידות – ואז זה {e} ליחידה.', dealYes:'המבצע חל: {e} ליחידה במקום {r}. סה״כ {t} ל־{n} יחידות.', buyDeal:'קנה {n} במבצע', dealName:'כך המבצע מופיע ברשת: "{d}"', totalFor:'סה״כ {t} ל־{n} יח׳', dealHintList:'מבצע {n} ב־{t} – חל רק מ־{n} יח׳', unitWord:'ליחידה',
+ eqNote:'מוצר מקביל ברשת זו', similarH:'מוצרים דומים בסניפים אחרים', staleNote:'מחירי הסניף מ־{t}', addCart:'הוסף לעגלה', asideTag:'🔴 שים בצד – ב{s} זול ב־{p}', asideToast:'🔴 שים בצד: ב{s} זה זול ב־{p}', okToast:'✔️ נוסף לעגלה – מחיר טוב', finishBtn:'🧾 סיימתי – איפה הכי משתלם?', finH:'סיכום הקנייה', optAll:'לקנות הכול כאן', optSplit:'לקנות כאן הכול חוץ מהמוצרים שבצד, ואותם ב{s}', optSave:'חיסכון של {p}', optAllBtn:'קונה הכול כאן', optSplitBtn:'מפצל – צור רשימה ל{s}', finWorth:'👍 ההמלצה: לפצל. החיסכון שווה עצירה נוספת ({km}).', finNot:'🤔 ההמלצה: לקנות הכול כאן – החיסכון קטן מדי בשביל עוד עצירה.', finNone:'אין מוצרים בצד – הכול כאן במחיר טוב. אפשר לגשת לקופה!', asideN:'{n} מוצרים בצד', movedAside:'המוצרים שבצד נוספו לרשימה של {s}', keptAll:'מעולה – הכול נשאר בעגלה',
+ deliveryBtn:'🚚 הזמנה אונליין מ{s}', deliveryNote:'אופציה: במקום לנסוע – להזמין מאתר הרשת. המחירים באתר יכולים להיות שונים מהסניף, ויש דמי משלוח ומינימום הזמנה. מבצעים נקבעים לפי יום הליקוט.', noOnline:'ל{s} אין כרגע אתר הזמנות מחובר – אפשר רק להגיע לסניף.', copyForSite:'📋 העתק רשימה לאתר', pickupNote:'(בעיקר איסוף עצמי מהסניף)',
+ homeH:'🏠 לפני שיוצאים מהבית', homeBest:'הרשימה הקבועה שלך ({n} מוצרים) הכי משתלמת ב{s}: {t}', homeSave:'חיסכון של {p} לעומת {w}', homeOpen:'פתחו את ההשוואה המלאה', homeEmpty:'בנו רשימת קניות קבועה – ולפני כל יציאה תראו כאן איפה הכי משתלם לקנות אותה.', homeBuild:'⭐ לבניית הרשימה הקבועה', homeMiss:'({n} מוצרים לא נמכרים שם)',
  nbScan:'סריקה', nbLists:'הרשימות שלי', nbInfo:'מידע ונגישות',
  listsH:'הרשימות שלי', emptyLists:'עוד אין כלום ברשימות. סרקו מוצר והחליטו: קונים כאן, או מוסיפים לרשימה של סופר זול יותר.',
  ifHere:'אם הייתם קונים הכול בסניף שבו סרקתם: {p}', splitPay:'בפיצול הקנייה תשלמו {p} ותחסכו', storesItems:'{s} סניפים · {i} מוצרים',
@@ -460,6 +475,9 @@ ru:{ name:'Русский', dir:'ltr',
  whoH:'Добро пожаловать! Кто пользуется?', whoTxt:'У каждого пользователя свои списки на этом устройстве. Пароль не нужен.', nameLbl:'Ваше имя', enter:'Войти', guest:'Продолжить без имени', guestName:'Гость', newUser:'+ Новый пользователь', switchedTo:'Вы вошли как {n}', userMenu:'Пользователь: {n}', logout:'Сменить пользователя', shareH:'👫 Поделиться с партнёром', shareTxt:'Отправьте ссылку – второй человек добавит список к себе одним нажатием.', shareWa:'Отправить в WhatsApp', shareCopy:'Копировать ссылку', shareMsg:'{n} поделился(-ась) с вами списком покупок в «Умной корзине»:', importH:'{n} поделился(-ась) с вами списком', importTxt:'В постоянный список: {f}, в списки покупок: {i}.', importAdd:'Добавить в мои списки', imported:'Список добавлен', shareEmpty:'Списки пусты – пока нечем поделиться', area:'⚙️ Район и сравнение', loading:'Загружаю актуальные цены…', loadFail:'Не удалось загрузить цены. Проверьте подключение и попробуйте снова.',
  multiHint:'Акция на количество: {d}. Цена {p} за шт. – только при покупке от {n} шт. Увеличьте количество, чтобы увидеть.', perUnitShort:'за шт.', vatNote:'Все цены включают НДС, как сети обязаны публиковать.',
  dealBadge:'Акция: {n} шт. за {t}', saleSingle:'Акция: {e} вместо {r}', perOneDeal:'за 1 шт. · акция только от {n} шт.', perUnitInDeal:'за шт. по акции {n} за {t}', dealT:'Акция на количество: {n} шт. за {t}', dealNot:'Показанная цена ({r}) – за 1 шт. Акция действует только при покупке {n} шт. – тогда {e} за шт.', dealYes:'Акция действует: {e} за шт. вместо {r}. Итого {t} за {n} шт.', buyDeal:'Купить {n} по акции', dealName:'Так акция указана в сети: «{d}»', totalFor:'Итого {t} за {n} шт.', dealHintList:'Акция {n} за {t} – только от {n} шт.', unitWord:'за шт.',
+ eqNote:'аналогичный товар в этой сети', similarH:'Похожие товары в других магазинах', staleNote:'цены магазина от {t}', addCart:'В корзину', asideTag:'🔴 Отложите – в {s} дешевле на {p}', asideToast:'🔴 Отложите: в {s} дешевле на {p}', okToast:'✔️ В корзине – хорошая цена', finishBtn:'🧾 Закончил – где выгоднее?', finH:'Итог покупки', optAll:'Купить всё здесь', optSplit:'Купить здесь всё, кроме отложенного, а отложенное – в {s}', optSave:'экономия {p}', optAllBtn:'Покупаю всё здесь', optSplitBtn:'Разделить – список для {s}', finWorth:'👍 Рекомендация: разделить. Экономия стоит дополнительной остановки ({km}).', finNot:'🤔 Рекомендация: купить всё здесь – экономия слишком мала для ещё одной остановки.', finNone:'Отложенных товаров нет – всё здесь по хорошей цене. Можно на кассу!', asideN:'Отложено товаров: {n}', movedAside:'Отложенные товары добавлены в список {s}', keptAll:'Отлично – всё осталось в корзине',
+ deliveryBtn:'🚚 Заказать онлайн в {s}', deliveryNote:'Вариант: вместо поездки – заказать на сайте сети. Цены на сайте могут отличаться от магазина, есть стоимость доставки и минимальный заказ. Акции действуют по дню сборки заказа.', noOnline:'У сети {s} пока нет подключённого сайта заказов – только визит в магазин.', copyForSite:'📋 Скопировать список для сайта', pickupNote:'(в основном самовывоз из магазина)',
+ homeH:'🏠 Перед выходом из дома', homeBest:'Ваш постоянный список ({n} товаров) выгоднее всего в {s}: {t}', homeSave:'Экономия {p} по сравнению с {w}', homeOpen:'Открыть полное сравнение', homeEmpty:'Составьте постоянный список – и перед каждым выходом здесь будет видно, где выгоднее его купить.', homeBuild:'⭐ Составить постоянный список', homeMiss:'({n} товаров там не продаются)',
  nbScan:'Сканер', nbLists:'Мои списки', nbInfo:'Инфо и доступность',
  listsH:'Мои списки', emptyLists:'Списки пока пусты. Отсканируйте товар и решите: купить здесь или добавить в список более дешёвого магазина.',
  ifHere:'Если бы вы купили всё там, где сканировали: {p}', splitPay:'Разделив покупку, вы заплатите {p} и сэкономите', storesItems:'Магазинов: {s} · товаров: {i}',
@@ -529,6 +547,9 @@ am:{ name:'አማርኛ', dir:'ltr',
  whoH:'እንኳን ደህና መጡ! ማን ነው የሚጠቀመው?', whoTxt:'እያንዳንዱ ተጠቃሚ በዚህ መሣሪያ ላይ የራሱ ዝርዝሮች አሉት። የይለፍ ቃል አያስፈልግም።', nameLbl:'ስምዎ', enter:'ግባ', guest:'ያለ ስም ቀጥል', guestName:'እንግዳ', newUser:'+ አዲስ ተጠቃሚ', switchedTo:'እንደ {n} ገብተዋል', userMenu:'ተጠቃሚ፦ {n}', logout:'ተጠቃሚ ቀይር', shareH:'👫 ከትዳር አጋር ጋር አጋራ', shareTxt:'ማገናኛ ይላኩ፤ ሌላው ሰው በአንድ ጠቅታ ዝርዝሩን ይጨምራል።', shareWa:'በWhatsApp ላክ', shareCopy:'ማገናኛ ቅዳ', shareMsg:'{n} በብልህ ቅርጫት የግዢ ዝርዝር አጋርቶዎታል፦', importH:'{n} ዝርዝር አጋርቶዎታል', importTxt:'ወደ ቋሚ ዝርዝር {f} ምርቶች፣ ወደ ግዢ ዝርዝሮች {i}።', importAdd:'ወደ ዝርዝሮቼ ጨምር', imported:'ዝርዝሩ ተጨምሯል', shareEmpty:'ዝርዝሮቹ ባዶ ናቸው – ገና የሚጋራ ነገር የለም', area:'⚙️ አካባቢና ማወዳደር', loading:'ወቅታዊ ዋጋዎችን በመጫን ላይ…', loadFail:'ዋጋዎችን መጫን አልተቻለም። ግንኙነቱን ፈትሸው እንደገና ይሞክሩ።',
  multiHint:'የብዛት ቅናሽ፦ {d}። የአንዱ ዋጋ {p} የሚሆነው {n} እና ከዚያ በላይ ሲገዙ ብቻ ነው – ለማየት ብዛቱን ይጨምሩ።', perUnitShort:'ለአንዱ', vatNote:'ሁሉም ዋጋዎች ተ.እ.ታን ያካትታሉ።',
  dealBadge:'ቅናሽ፦ {n} በ{t}', saleSingle:'ቅናሽ፦ ከ{r} ይልቅ {e}', perOneDeal:'ለአንድ · ቅናሹ {n} ሲገዙ ብቻ', perUnitInDeal:'ለአንዱ በቅናሽ {n} በ{t}', dealT:'የብዛት ቅናሽ፦ {n} በ{t}', dealNot:'የሚታየው ዋጋ ({r}) ለአንድ ነው። ቅናሹ የሚሠራው {n} ሲገዙ ብቻ ነው – ያኔ ለአንዱ {e}።', dealYes:'ቅናሹ ይሠራል፦ ከ{r} ይልቅ ለአንዱ {e}። ጠቅላላ {t} ለ{n}።', buyDeal:'{n} በቅናሽ ግዛ', dealName:'በሰንሰለቱ ላይ የተጻፈው፦ «{d}»', totalFor:'ጠቅላላ {t} ለ{n}', dealHintList:'ቅናሽ {n} በ{t} – ከ{n} ጀምሮ ብቻ', unitWord:'ለአንዱ',
+ eqNote:'በዚህ ሰንሰለት ተመሳሳይ ምርት', similarH:'በሌሎች ሱቆች ተመሳሳይ ምርቶች', staleNote:'የሱቁ ዋጋዎች ከ{t}', addCart:'ወደ ጋሪ ጨምር', asideTag:'🔴 ለይተው ያስቀምጡ – በ{s} በ{p} ይረክሳል', asideToast:'🔴 ለይተው ያስቀምጡ፦ በ{s} በ{p} ይረክሳል', okToast:'✔️ ወደ ጋሪ ተጨምሯል – ጥሩ ዋጋ', finishBtn:'🧾 ጨርሻለሁ – የት ይሻላል?', finH:'የግዢ ማጠቃለያ', optAll:'ሁሉንም እዚህ መግዛት', optSplit:'ከተለዩት በስተቀር ሁሉንም እዚህ፣ የተለዩትን በ{s}', optSave:'{p} ቁጠባ', optAllBtn:'ሁሉንም እዚህ እገዛለሁ', optSplitBtn:'ከፋፍል – ለ{s} ዝርዝር ፍጠር', finWorth:'👍 ምክር፦ ከፋፍሉ። ቁጠባው ተጨማሪ ጉዞ ይጠቅማል ({km})።', finNot:'🤔 ምክር፦ ሁሉንም እዚህ ይግዙ – ቁጠባው ለተጨማሪ ጉዞ ትንሽ ነው።', finNone:'የተለየ ምርት የለም – ሁሉም እዚህ በጥሩ ዋጋ ነው። ወደ ክፍያ መሄድ ይችላሉ!', asideN:'{n} ምርቶች ተለይተዋል', movedAside:'የተለዩት ምርቶች ወደ {s} ዝርዝር ተጨምረዋል', keptAll:'በጣም ጥሩ – ሁሉም በጋሪው ውስጥ ቀርቷል',
+ deliveryBtn:'🚚 ከ{s} በመስመር ላይ ይዘዙ', deliveryNote:'አማራጭ፦ ከመሄድ ይልቅ ከሰንሰለቱ ድረ-ገጽ ማዘዝ። በድረ-ገጹ ያሉ ዋጋዎች ከሱቁ ሊለዩ ይችላሉ፤ የማድረሻ ክፍያና ዝቅተኛ ትዕዛዝ አለ። ቅናሾች በዝግጅቱ ቀን ይወሰናሉ።', noOnline:'{s} ገና የተገናኘ የትዕዛዝ ድረ-ገጽ የለውም – ወደ ሱቁ መሄድ ብቻ።', copyForSite:'📋 ዝርዝሩን ለድረ-ገጹ ቅዳ', pickupNote:'(በአብዛኛው ከሱቁ መውሰድ)',
+ homeH:'🏠 ከቤት ከመውጣትዎ በፊት', homeBest:'ቋሚ ዝርዝርዎ ({n} ምርቶች) በ{s} በጣም ርካሽ ነው፦ {t}', homeSave:'ከ{w} ጋር ሲነጻጸር {p} ቁጠባ', homeOpen:'ሙሉ ንጽጽሩን ይክፈቱ', homeEmpty:'ቋሚ የግዢ ዝርዝር ይስሩ – ከመውጣትዎ በፊት የት መግዛት እንደሚሻል እዚህ ያያሉ።', homeBuild:'⭐ ቋሚ ዝርዝር ለመስራት', homeMiss:'({n} ምርቶች እዚያ አይሸጡም)',
  nbScan:'ቅኝት', nbLists:'የእኔ ዝርዝሮች', nbInfo:'መረጃና ተደራሽነት',
  listsH:'የእኔ ዝርዝሮች', emptyLists:'ዝርዝሮቹ ገና ባዶ ናቸው። ምርት ይቃኙና ይወስኑ፦ እዚህ ይግዙ ወይም ርካሽ ሱቅ ዝርዝር ውስጥ ያስገቡ።',
  ifHere:'ሁሉንም በቃኙበት ሱቅ ቢገዙ፦ {p}', splitPay:'ግዢውን ሲከፋፍሉ {p} ይከፍላሉ፤ የሚቆጥቡት', storesItems:'{s} ሱቆች · {i} ምርቶች',
@@ -574,6 +595,8 @@ const CHAIN={rl:{he:'רמי לוי',ru:'Рами Леви',am:'ራሚ ሌቪ'},t
 const POS={reh:[31.8948,34.8113],nz:[31.9293,34.7987],yav:[31.8780,34.7390],rlz:[31.9730,34.7925],gy:[31.7860,34.7060],ged:[31.8120,34.7790],by:[31.9420,34.8340]};
 const SPOS={rl041:[31.8810,34.8160],yoh031:[31.8985,34.8095],tt018:[31.9090,34.8040],rl043:[31.9850,34.7700],tt014:[31.9905,34.8105],oa025:[31.9900,34.7680],lhv025:[31.8720,34.7300],dudu010:[31.9370,34.8270]};
 const REF={lat:31.8948,lng:34.8113};
+// chains' online ordering sites (optional alternative to driving). Others: to be linked later.
+const ONLINE={rl:{url:'https://www.rami-levy.co.il'},tt:{url:'https://www.tivtaam.co.il'},yoh:{url:'https://yochananof.co.il',pickup:true}};
 function hav(a,b,c,d){const R=6371,t=x=>x*Math.PI/180,dl=t(c-a),dg=t(d-b),q=Math.sin(dl/2)**2+Math.cos(t(a))*Math.cos(t(c))*Math.sin(dg/2)**2;return 2*R*Math.asin(Math.sqrt(q));}
 // ru/am -> he dictionary for searching Hebrew product names in other languages
 const SYN1=[
@@ -641,8 +664,14 @@ function loadData(D){
   CODEIDX=new Map(); PRODUCTS.forEach(p=>{CODEIDX.set(p.code.replace(/^0+/,''),p.id);});
   PRICE=D.S.map(str=>{const a=new Int32Array(PRODUCTS.length); let i=0; for(const v of str.split(',')){ if(v)a[i]=parseInt(v,16); i++; } return a;});
   PROMO=D.PR; PDESC=D.D;
-  setDistances(REF.lat,REF.lng);
+  setDistances(REF.lat,REF.lng); buildEq();
 }
+let EQ=null;
+function eqKey(p){ let w=norm(p.name.he).replace(/[^\u0590-\u05FFa-z0-9%. ]/g,' ').split(/\s+/).filter(x=>x&&!['במשקל','משקל','שקיל','לקג','ארוז','תפזורת'].includes(x));
+  if(p.w) w=w.map(x=>x.length>=4?x.replace(/(יות|ות|ים|יה|ה)$/,''):x);
+  return w.join(' ')+'|'+(p.w?1:0)+'|'+(p.w?'':(p.q+p.u)); }
+function buildEq(){ const m=new Map(); PRODUCTS.forEach(p=>{const k=eqKey(p); if(!k.split('|')[0])return; const a=m.get(k); if(a)a.push(p.id); else m.set(k,[p.id]);});
+  EQ=new Array(PRODUCTS.length); for(const a of m.values()) if(a.length>1) for(const i of a) EQ[i]=a; }
 function setDistances(la,lo){ STORES.forEach(s=>{s.km=Math.round(hav(la,lo,s.lat,s.lng)*10)/10;}); }
 function fmtTime(iso){ try{ const d=new Date(iso); const p=n=>String(n).padStart(2,'0'); return `${p(d.getDate())}.${p(d.getMonth()+1)}.${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`; }catch(e){ return iso; } }
 const EMB=(document.getElementById('DATA').textContent||'').trim(); if(EMB&&EMB!=='null'&&EMB[0]==='{')loadData(JSON.parse(EMB));
@@ -694,14 +723,26 @@ function promoBlock(pa,q,btnId){ const pr=pa&&pa.promo; if(!pr)return '';
   if(pr.mq<=1) return `<div class="deal"><strong>🏷️ ${esc(T('saleSingle',{e:money(pr.e),r:money(pa.reg)}))}</strong>${name}</div>`;
   if(!pr.applies) return `<div class="deal"><strong>🏷️ ${esc(T('dealT',{n:pr.mq,t:money(pr.t)}))}</strong><span>${esc(T('dealNot',{r:money(pa.reg),n:pr.mq,e:money(pr.e)}))}</span>${name}<button class="dealbtn" id="${btnId}" data-mq="${pr.mq}">${esc(T('buyDeal',{n:pr.mq}))}</button></div>`;
   return `<div class="deal"><strong>🏷️ ${esc(T('dealT',{n:pr.mq,t:money(pr.t)}))}</strong><span>${esc(T('dealYes',{e:money(pa.price),r:money(pa.reg),t:money(pa.price*q),n:q}))}</span>${name}</div>`; }
+function staleTxt(s){ if(!s.upd)return ''; const h=(Date.parse(DATA_GEN)-Date.parse(s.upd))/36e5; return h>12?' · '+esc(T('staleNote',{t:fmtTime(s.upd)})):''; }
+function similarFor(pi,R,exclude){ // similar products sold in stores that don't carry this one
+  const p=PRODUCTS[pi]; const fw=eqKey(p).split('|')[0].split(' ')[0]; if(!fw)return [];
+  const have=new Set(carriers(pi).map(s=>s.id)); const stores=STORES.filter(s=>(s.km<=R||s.id===state.here)&&!have.has(s.id)); if(!stores.length)return [];
+  const out=[]; const names=nnames();
+  for(let i=0;i<PRODUCTS.length&&out.length<400;i++){ if(i===pi||(EQ&&EQ[pi]&&EQ[pi].includes(i)))continue; const q=PRODUCTS[i]; if(q.w!==p.w)continue; const k=eqKey(q).split('|')[0]; if(k.split(' ')[0]!==fw)continue;
+    for(const s of stores){ const a=priceAt(i,s.id,1); if(a)out.push({pi:i,s,price:a.price}); } }
+  out.sort((a,b)=>a.price-b.price); const seen=new Set(), res=[]; for(const o of out){ if(seen.has(o.s.id))continue; seen.add(o.s.id); res.push(o); if(res.length>=5)break; } return res; }
 function sIdx(sid){return STORES.findIndex(s=>s.id===sid);}
-function priceAt(pi,sid,q){ q=q||1; const si=sIdx(sid); if(si<0)return null; const c=PRICE[si][pi]; if(!c)return null; const reg=c/100; const pr=PROMO[si][pi];
+function priceAt1(g,si,q){ const c=PRICE[si][g]; if(!c)return null; const reg=c/100; const pr=PROMO[si][g];
   if(pr){ const e=pr[0]/100; if(e<reg){ const promo={e,mq:pr[1],t:pr[2]/100,d:PDESC[pr[3]]||''}; promo.applies=(promo.mq<=1||q>=promo.mq);
       let price=reg; if(promo.applies) price = promo.mq<=1 ? e : (Math.floor(q/promo.mq)*promo.t + (q%promo.mq)*reg)/q;
-      return {price,reg,promo}; } }
-  return {price:reg,reg,promo:null}; }
-function carriers(pi){ return STORES.filter(s=>{const si=sIdx(s.id); return PRICE[si][pi]>0;}); }
-function refPrice(pi){ const a=carriers(pi).map(s=>PRICE[sIdx(s.id)][pi]/100).sort((x,y)=>x-y); if(!a.length)return 0; const m=a.length/2; return a.length%2?a[Math.floor(m)]:(a[m-1]+a[m])/2; }
+      return {price,reg,promo,pid:g}; } }
+  return {price:reg,reg,promo:null,pid:g}; }
+function priceAt(pi,sid,q){ q=q||1; const si=sIdx(sid); if(si<0)return null; const cand=EQ&&EQ[pi]?EQ[pi]:[pi]; let best=null;
+  for(const g of cand){ const r=priceAt1(g,si,q); if(r&&(!best||r.price<best.price||(g===pi&&r.price===best.price)))best=r; }
+  if(best)best.eq=best.pid!==pi; return best; }
+function carriers(pi){ const cand=EQ&&EQ[pi]?EQ[pi]:[pi]; return STORES.filter(s=>{const si=sIdx(s.id); return cand.some(g=>PRICE[si][g]>0);}); }
+function regMin(pi,si){ const cand=EQ&&EQ[pi]?EQ[pi]:[pi]; let m=0; for(const g of cand){const c=PRICE[si][g]; if(c&&(!m||c<m))m=c;} return m/100; }
+function refPrice(pi){ const a=carriers(pi).map(s=>regMin(pi,sIdx(s.id))).sort((x,y)=>x-y); if(!a.length)return 0; const m=a.length/2; return a.length%2?a[Math.floor(m)]:(a[m-1]+a[m])/2; }
 function rate(pi,sid,q){ const pa=priceAt(pi,sid,q); if(!pa)return{k:'na',icon:'•',d:0,ref:refPrice(pi)}; const n=carriers(pi).length, ref=refPrice(pi), d=ref?(pa.price-ref)/ref:0;
   if(pa.promo&&pa.promo.applies&&pa.price<pa.reg-0.004)return{k:'promo',icon:'⭐',d,ref};
   if(n<2)return{k:'na',icon:'•',d:0,ref};
@@ -898,7 +939,7 @@ function showProduct(pi,noScroll){
    </div>
    <div class="actions">
      <div class="qty" role="group" aria-label="${esc(T('qty'))}"><button id="qDec" aria-label="${esc(T('dec'))}">−</button><output id="qv" aria-live="polite">${qty}</output><button id="qInc" aria-label="${esc(T('inc'))}">+</button></div>
-     ${hereOk?`<button class="btn pri" data-add="${here}">✔️ ${esc(T('buyHere'))}</button>`:''}
+     ${hereOk?`<button class="btn pri" data-add="${here}">🛒 ${esc(T('addCart'))}</button>`:''}
    </div>`;
   h+=`<div class="l2" style="padding:.6rem .9rem 0"><button class="lnk" id="toWhere">🔍 ${esc(T('openWhere'))}</button>${fixedBtn(pi,'fxP')}</div>`;
   if(best&&hereOk&&best.s.id!==here&&best.price<ph.price){const sv=ph.price-best.price;
@@ -917,12 +958,13 @@ function showProduct(pi,noScroll){
     const diffTxt=(isH||!hereOk)?'':(diff>0.005?`<small>${esc(T('saves',{p:money(diff)}))}</small>`:diff<-0.005?`<small class="neg">${esc(T('costsMore',{p:money(-diff)}))}</small>`:`<small>${esc(T('same'))}</small>`);
     h+=`<li class="store ${isH?'isHere':''}"><div class="l1"><span class="dot" style="background:${DOT[n.rt.k]}" aria-hidden="true"></span>
       <div class="sinfo"><div class="sname">${esc(sName(n.s.id))}${isH?`<span class="badge b-here">${esc(T('youHere'))}</span>`:''}${idx===0?`<span class="badge b-best">${esc(T('best'))}</span>`:''}${n.promo?`<span class="badge b-promo">${esc(promoBadge(n))}</span>`:''}</div>
-      <div class="smeta">${esc(sCity(n.s.id))} · ${isH?esc(T('youHere')):esc(kmTxt(n.s.km))} · ${esc(T('r_'+n.rt.k))}</div></div>
+      <div class="smeta">${esc(sCity(n.s.id))} · ${isH?esc(T('youHere')):esc(kmTxt(n.s.km))} · ${esc(T('r_'+n.rt.k))}${n.eq?' · '+esc(T('eqNote')):''}${staleTxt(n.s)}</div></div>
       <div class="sprice">${money(n.price)}${rowNote(n)}${diffTxt}</div></div>
       ${isH?'':`<div class="l2"><button class="addto" data-add="${n.s.id}" aria-pressed="${already}">${already?'✔ '+esc(T('inList')):'+ '+esc(T('addList'))}<span class="sr-only"> – ${esc(sName(n.s.id))}, ${money(n.price)}</span></button>
       <a class="navl" href="${wazeUrl(n.s.id)}" target="_blank" rel="noopener" >🧭 Waze<span class="sr-only"> – ${esc(sFull(n.s.id))}</span></a>
       <a class="navl" href="${mapsUrl(n.s.id)}" target="_blank" rel="noopener" >🗺️ ${esc(T('maps'))}<span class="sr-only"> Google – ${esc(sFull(n.s.id))}</span></a></div>`}</li>`;});
   h+='</ul>';
+  const sim=similarFor(pi,R); if(sim.length){ h+=`<h3 class="sect" style="margin:0">${esc(T('similarH'))}</h3><ul class="stores">`+sim.map(o=>`<li class="store"><div class="l1"><span aria-hidden="true">${PRODUCTS[o.pi].emoji}</span><div class="sinfo"><div class="sname">${esc(pName(PRODUCTS[o.pi]))}</div><div class="smeta">${esc(sName(o.s.id))} · ${esc(sCity(o.s.id))} · ${esc(kmTxt(o.s.km))}</div></div><div class="sprice">${money(o.price)}</div></div><div class="l2"><button class="addto" data-open="${o.pi}">🔍 ${esc(T('openWhere'))}<span class="sr-only"> – ${esc(pName(PRODUCTS[o.pi]))}</span></button></div></li>`).join('')+'</ul>'; }
   h+='</article>';
   const pc=$('productCard'); pc.innerHTML=h; $('results').innerHTML='';
   $('qDec').onclick=()=>chq(-1); $('qInc').onclick=()=>chq(1);
@@ -930,6 +972,7 @@ function showProduct(pi,noScroll){
   $('fxP').onclick=()=>{toggleFixed(pi,qty);showProduct(pi,true);$('fxP').focus();};
   $('toWhere').onclick=()=>{ go('where'); $('wq').value=pName(p); showWhere(pi); };
   pc.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addTo(b.dataset.add));
+  pc.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>showProduct(+b.dataset.open));
   if(!noScroll){ const t=$('pTitle'); t.focus({preventScroll:true}); pc.scrollIntoView({behavior:state.a11y.mo?'auto':'smooth',block:'start'});
     announce(hereOk?T('found',{n:pName(p),p:money(ph.price),r:T('r_'+r.k)}):pName(p)+' – '+T('notHere'),false); }
 }
@@ -937,11 +980,15 @@ function chq(d){qty=Math.max(1,Math.min(99,qty+d)); $('qv').textContent=qty; sho
 function inFixed(pi){return state.fixed.some(f=>f.pid===pi);}
 function toggleFixed(pi,q){ const i=state.fixed.findIndex(f=>f.pid===pi); if(i>=0){state.fixed.splice(i,1);announce(T('removedFixed'));} else {state.fixed.push({pid:pi,qty:q||1});announce(T('addedFixed'));} save(); }
 function fixedBtn(pi,id){ const on=inFixed(pi); return `<button class="addto" id="${id}" aria-pressed="${on}">${esc(on?T('inFixed'):T('toFixed'))}</button>`; }
+function asideInfo(pi,q){ // is a cheaper store nearby worth putting this item aside?
+  const here=state.here, h=priceAt(pi,here,q); if(!h)return null; const b=cheapestIn(pi,state.radius,q).find(r=>r.s.id!==here); if(!b)return null;
+  const sv=(h.price-b.price)*q; if(sv>=1&&(h.price-b.price)/h.price>=0.10) return {s:b.s,sv,price:b.price}; return null; }
 function addTo(sid,piArg,fromWhere){
   const pi=piArg!==undefined?piArg:current, from=state.here; state.hist[pi]=(state.hist[pi]||0)+1; const ex=state.items.find(it=>it.pid===pi&&it.sid===sid);
   if(ex)ex.qty+=qty; else state.items.push({pid:pi,sid,fromSid:from,qty,got:false});
   save(); renderBadge(); const pf=priceAt(pi,from,qty), sv=pf?(pf.price-priceAt(pi,sid,qty).price)*qty:0;
-  announce(sid===from?T('addedHere'):T('addedTo',{s:sName(sid)})+(sv>0.005?' · '+T('saving',{p:money(sv)}):''));
+  if(sid===from){ const ai=asideInfo(pi,qty); announce(ai?T('asideToast',{s:sName(ai.s.id),p:money(ai.sv)}):T('okToast')); if(ai)buzz([60,80,60]); }
+  else announce(T('addedTo',{s:sName(sid)})+(sv>0.005?' · '+T('saving',{p:money(sv)}):''));
   const focusSel=`[data-add="${sid}"]`;
   if(fromWhere){ showWhere(pi,true); const b=$('whereCard').querySelector(focusSel); b&&b.focus(); return; }
   showProduct(pi,true); const b=$('productCard').querySelector(focusSel); b&&b.focus();
@@ -994,7 +1041,7 @@ function showWhere(pi,noScroll){
   rows.forEach((n,idx)=>{const already=inList.some(it=>it.sid===n.s.id), diff=n.price-b.price;
     h+=`<li class="store ${n.s.id===here?'isHere':''}"><div class="l1"><span class="rank" aria-hidden="true">${idx+1}</span><span class="dot" style="background:${DOT[n.rt.k]}" aria-hidden="true"></span>
       <div class="sinfo"><div class="sname">${esc(sName(n.s.id))}${n.s.id===here?`<span class="badge b-here">${esc(T('youHere'))}</span>`:''}${idx===0?`<span class="badge b-best">${esc(T('best'))}</span>`:''}${n.promo?`<span class="badge b-promo">${esc(promoBadge(n))}</span>`:''}</div>
-      <div class="smeta">${esc(sCity(n.s.id))} · ${esc(kmTxt(n.s.km))} · ${esc(T('r_'+n.rt.k))}</div></div>
+      <div class="smeta">${esc(sCity(n.s.id))} · ${esc(kmTxt(n.s.km))} · ${esc(T('r_'+n.rt.k))}${n.eq?' · '+esc(T('eqNote')):''}${staleTxt(n.s)}</div></div>
       <div class="sprice">${money(n.price)}${rowNote(n)}${idx>0&&diff>0.005?`<small class="neg">${esc(T('costsMore',{p:money(diff)}))}</small>`:''}</div></div>
       <div class="l2"><button class="addto" data-add="${n.s.id}" aria-pressed="${already}">${already?'✔ '+esc(T('inList')):'+ '+esc(T('addList'))}<span class="sr-only"> – ${esc(sName(n.s.id))}, ${money(n.price)}</span></button>
       <a class="navl" href="${wazeUrl(n.s.id)}" target="_blank" rel="noopener">🧭 Waze<span class="sr-only"> – ${esc(sFull(n.s.id))}</span></a></div></li>`;});
@@ -1013,9 +1060,30 @@ function showWhere(pi,noScroll){
 function pp(pi,sid,q){const a=priceAt(pi,sid,q);return a?a.price:null;}
 function itemSaving(it){const f=pp(it.pid,it.fromSid,it.qty),t=pp(it.pid,it.sid,it.qty); return (f===null||t===null)?0:(f-t)*it.qty;}
 function totals(){let spend=0,sv=0,ifHere=0;state.items.forEach(it=>{const t=pp(it.pid,it.sid,it.qty)||0, f=pp(it.pid,it.fromSid,it.qty); spend+=t*it.qty; sv+=itemSaving(it); ifHere+=(f===null?t:f)*it.qty;});return{spend,sv,ifHere};}
-function renderBadge(){const n=state.items.length,c=$('cnt');c.textContent=n;c.classList.toggle('hidden',!n); $('saveTotal').textContent=money(Math.max(0,totals().sv));
+function renderHome(){ const el=$('homeCard'); if(!el||!PRODUCTS)return; const FXn=state.fixed.filter(f=>!f.custom).length;
+  let h=`<h2 id="homeH" class="homeh">${esc(T('homeH'))}</h2>`;
+  if(!FXn){ h+=`<p style="margin:.2rem 0 .5rem">${esc(T('homeEmpty'))}</p><button class="btn" id="homeGo">${esc(T('homeBuild'))}</button>`; }
+  else { const {tot}=basketCalc(), b=tot[0], w=tot.filter(x=>x.miss===b.miss).pop();
+    h+=`<p style="margin:.2rem 0 0;font-weight:700">${esc(T('homeBest',{n:FXn,s:sFull(b.s.id),t:money(b.t)}))} <span class="hint">· ${esc(kmTxt(b.s.km))}</span> ${b.miss?`<span class="hint">${esc(T('homeMiss',{n:b.miss}))}</span>`:''}</p>
+     ${w&&w.s.id!==b.s.id&&w.t-b.t>=1?`<p style="margin:.1rem 0 .5rem;color:var(--brand-d);font-weight:700">${esc(T('homeSave',{p:money(w.t-b.t),w:sName(w.s.id)===sName(b.s.id)?sFull(w.s.id):sName(w.s.id)}))}</p>`:'<div style="height:.4rem"></div>'}
+     <button class="btn pri" id="homeGo">${esc(T('homeOpen'))}</button>`; }
+  el.innerHTML=h; $('homeGo').onclick=()=>{ go('lists'); if(FXn){basketOpen=true;} renderLists(); const t=FXn?$('basketRes'):$('fxq'); if(t){ if(t.id==='basketRes'){t.setAttribute('tabindex','-1');} t.focus(); t.scrollIntoView({block:'start'});} }; }
+function renderBadge(){ try{renderHome();}catch(e){}const n=state.items.length,c=$('cnt');c.textContent=n;c.classList.toggle('hidden',!n); $('saveTotal').textContent=money(Math.max(0,totals().sv));
   $('cntSr').textContent=n?' ('+n+')':'';}
-let confirmOpen=false, basketOpen=false;
+let confirmOpen=false, basketOpen=false, finOpen=false;
+function finishCalc(){ const here=state.here, cart=state.items.filter(it=>it.sid===here), aside=cart.filter(it=>asideInfo(it.pid,it.qty));
+  const all=cart.reduce((a,it)=>a+(pp(it.pid,here,it.qty)||0)*it.qty,0); if(!aside.length)return {all,aside:[]};
+  let best=null; for(const s of STORES.filter(s=>s.id!==here&&s.km<=state.radius)){ let t=0,moved=[]; for(const it of aside){ const v=pp(it.pid,s.id,it.qty), hv=pp(it.pid,here,it.qty); if(v!==null&&v<hv){t+=v*it.qty;moved.push(it);} else t+=hv*it.qty; }
+    if(!moved.length)continue; const keep=cart.filter(it=>!aside.includes(it)).reduce((a,it)=>a+(pp(it.pid,here,it.qty)||0)*it.qty,0); const tot=keep+t; if(!best||tot<best.tot)best={s,tot,moved}; }
+  return {all,aside,best}; }
+function finishHtml(){ const f=finishCalc(); if(!f.aside.length||!f.best) return `<p class="worth ok" style="margin:0 .9rem .9rem;border-radius:.7rem">✅ ${esc(T('finNone'))}</p>`;
+  const sv=f.all-f.best.tot, ok=sv>=15;
+  return `<div class="fin" role="region" aria-labelledby="finH"><h4 id="finH" style="margin:0 0 .5rem">${esc(T('finH'))}</h4>
+   <div class="opt"><span>${esc(T('optAll'))}</span><b>${money(f.all)}</b></div>
+   <div class="opt best"><span>${esc(T('optSplit',{s:sFull(f.best.s.id)}))} · ~${esc(kmTxt(f.best.s.km))}</span><b>${money(f.best.tot)}</b><small>${esc(T('optSave',{p:money(sv)}))}</small></div>
+   <p class="worth ${ok?'ok':'meh'}" style="border-radius:.6rem;margin:.5rem 0">${esc(ok?T('finWorth',{km:kmTxt(f.best.s.km)}):T('finNot'))}</p>
+   <div class="row2" style="margin:0"><button class="btn" id="finAll">${esc(T('optAllBtn'))}</button><button class="btn pri" id="finSplit" data-s="${f.best.s.id}">${esc(T('optSplitBtn',{s:sName(f.best.s.id)}))}</button></div>
+   ${onlineHtml(f.best.s.id,f.best.moved.map(it=>it.pid).join(','))}</div>`; }
 function basketCalc(){ const R=state.radius, st=STORES.filter(s=>s.km<=R||s.id===state.here);
   const FX=state.fixed.filter(f=>!f.custom);
   const tot=st.map(s=>{let t=0,miss=0; FX.forEach(f=>{const v=pp(f.pid,s.id,f.qty); if(v===null)miss++; else t+=v*f.qty;}); return {s,t,miss};}).sort((a,b)=>a.miss-b.miss||a.t-b.t||a.s.km-b.s.km);
@@ -1045,7 +1113,7 @@ function basketHtml(){ const {tot,split,FX}=basketCalc(), b=tot[0], w=tot[tot.le
    <p class="bs" style="margin:.1rem 0 0">${esc(sFull(b.s.id))} · ~${esc(kmTxt(b.s.km))}</p><p class="bp" style="margin:0">${money(b.t)}</p>${b.miss?`<p class="hint" style="margin:0">${esc(T('missing',{n:b.miss}))}</p>`:''}
    ${tot.length>1&&w.t>b.t&&w.miss===b.miss?`<p style="margin:.2rem 0 0">${esc(T('vsWorst',{p:money(w.t-b.t),s:sName(w.s.id)}))}</p>`:''}
    ${hereT&&b.s.id!==state.here&&hereT.t>b.t&&hereT.miss===b.miss?`<p style="margin:.2rem 0 0;font-weight:700;color:var(--brand-d)">${esc(T('vsYour',{s:sName(state.here),p:money(hereT.t-b.t)}))}</p>`:''}
-   <div class="l2" style="padding:0;margin-top:.5rem"><button class="addto" data-make="${b.s.id}">${esc(T('makeOne',{s:sName(b.s.id)}))}</button><a class="navl" href="${wazeUrl(b.s.id)}" target="_blank" rel="noopener">🧭 Waze<span class="sr-only"> – ${esc(sFull(b.s.id))}</span></a></div></div>`;
+   <div class="l2" style="padding:0;margin-top:.5rem"><button class="addto" data-make="${b.s.id}">${esc(T('makeOne',{s:sName(b.s.id)}))}</button><a class="navl" href="${wazeUrl(b.s.id)}" target="_blank" rel="noopener">🧭 Waze<span class="sr-only"> – ${esc(sFull(b.s.id))}</span></a></div>${b.s.id!==state.here?onlineHtml(b.s.id,FX.map(f=>f.pid).join(',')):''}</div>`;
   if(split&&split.miss<=b.miss&&(split.miss<b.miss||split.t<b.t-0.005)){ const sv=b.t-split.t, ok=sv>=15;
     h+=`<div class="callout ${ok?'far':'sponsor'}" style="margin:.7rem 0 0"><div class="k">✂️ ${esc(T('splitH'))}</div>
       ${esc(T('splitTxt',{a:sName(split.a.id),b:sName(split.b.id),t:money(split.t),p:money(sv),s1:sName(b.s.id)}))}<br><strong>${esc(ok?T('splitWorth'):T('splitMeh'))}</strong>
@@ -1066,14 +1134,17 @@ function renderLists(){
     h+=`<section class="lst" aria-labelledby="lh-${sid}"><div class="lhead"><h3 id="lh-${sid}">${isH?'🛒 '+esc(T('cartHere',{s:sName(sid)})):'📋 '+esc(T('listOf',{s:sName(sid)}))}</h3><div class="m">${esc(sCity(sid))} · ${isH?esc(T('youHere')):esc(kmTxt(storeObj(sid).km))} · ${esc(T('items',{n:g.length}))}</div></div><ul class="items">`;
     g.forEach(([it,ix])=>{const p=PRODUCTS[it.pid],pr=pp(it.pid,sid,it.qty)||0,isv=itemSaving(it);
       h+=`<li class="li ${it.got?'got':''}"><label><input type="checkbox" data-got="${ix}" ${it.got?'checked':''} aria-label="${esc(T('got',{n:pName(p)}))}"><span><span class="nm"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} ×${it.qty}</span><small>${esc(pSize(p))}${it.fromSid!==sid?' · '+esc(T('scannedAt',{s:sName(it.fromSid)})):''}</small></span></label>
+        ${isH?(()=>{const ai=asideInfo(it.pid,it.qty); return ai?`<span class="aside">${esc(T('asideTag',{s:sName(ai.s.id),p:money(ai.sv)}))}</span>`:'';})():''}
         <div class="p">${money(pr*it.qty)}${isv>0.005?`<small>${esc(T('saved',{p:money(isv)}))}</small>`:''}${(()=>{const pa=priceAt(it.pid,sid,it.qty); return pa&&pa.promo&&pa.promo.mq>1?`<small class="pn">${esc(pa.promo.applies?T('perUnitInDeal',{n:pa.promo.mq,t:money(pa.promo.t)}):T('dealHintList',{n:pa.promo.mq,t:money(pa.promo.t)}))}</small>`:'';})()}</div>
         <button class="x" data-rm="${ix}" aria-label="${esc(T('remove',{n:pName(p)}))}">✕</button></li>`;});
     h+='</ul>';
+    if(isH){ const nA=g.filter(([it])=>asideInfo(it.pid,it.qty)).length; h+=`<div style="padding:.7rem .9rem">${nA?`<p style="margin:0 0 .4rem;font-weight:800;color:var(--v-red)">${esc(T('asideN',{n:nA}))}</p>`:''}<button class="bigscan" id="finBtn" aria-expanded="${finOpen}" aria-controls="finBox">${esc(T('finishBtn'))}</button></div><div id="finBox" aria-live="polite">${finOpen?finishHtml():''}</div>`; }
     if(!isH){const ok=sv>=15; h+=`<div class="worth ${ok?'ok':'meh'}">${ok?'👍 '+esc(T('worthOk',{p:money(sv),km:kmTxt(storeObj(sid).km)})):'🤔 '+esc(T('worthMeh',{p:money(sv),km:kmTxt(storeObj(sid).km)}))+` <button class="lnk" data-back="${sid}">${esc(T('buyAllHere'))}</button>`}</div>`;}
+    if(!isH) h+=`<div style="padding:0 .9rem .6rem">${onlineHtml(sid,g.map(([it])=>it.pid).join(','))}</div>`;
     h+=`<div class="lfoot"><span>${esc(T('total'))}: ${money(sum)}</span>${isH?'':`<span style="display:flex;gap:.4rem"><a class="navl" href="${wazeUrl(sid)}" target="_blank" rel="noopener" >🧭 Waze<span class="sr-only"> – ${esc(sFull(sid))}</span></a><a class="navl" href="${mapsUrl(sid)}" target="_blank" rel="noopener" >🗺️ ${esc(T('maps'))}<span class="sr-only"> Google – ${esc(sFull(sid))}</span></a></span>`}</div></section>`;});
   h+=`<div class="row2"><button class="btn" id="copyBtn">📋 ${esc(T('copy'))}</button><button class="btn" id="newBtn" aria-expanded="${confirmOpen}" aria-controls="confirmBox">🗑️ ${esc(T('newShop'))}</button></div>
    <div class="confirm ${confirmOpen?'':'hidden'}" id="confirmBox" role="group" aria-labelledby="confirmQ"><p id="confirmQ" style="margin:0 0 .6rem;font-weight:800">${esc(T('confirmQ'))}</p><div class="row2" style="margin:0"><button class="btn del" id="yesDel">${esc(T('yesDel'))}</button><button class="btn" id="noDel">${esc(T('cancel'))}</button></div></div>`;
-  el.innerHTML=h+shareHtml(); wireFixed(); wireShare();
+  el.innerHTML=h+shareHtml(); wireFixed(); wireShare(); wireFinish();
   el.querySelectorAll('[data-got]').forEach(c=>c.onchange=()=>{const ix=+c.dataset.got;state.items[ix].got=c.checked;save();renderLists();const n=$('listsBody').querySelector(`[data-got="${ix}"]`);n&&n.focus();});
   el.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{const p=PRODUCTS[state.items[+b.dataset.rm].pid];state.items.splice(+b.dataset.rm,1);save();renderBadge();renderLists();announce(T('remove',{n:pName(p)})+' ✓',false);const f=$('listsBody').querySelector('button,input');f&&f.focus();});
   el.querySelectorAll('[data-back]').forEach(b=>b.onclick=()=>moveBack(b.dataset.back));
@@ -1084,14 +1155,15 @@ function renderLists(){
 }
 function norm(t){return String(t).toLowerCase().replace(/[\u0591-\u05C7״׳"'`´]/g,'').replace(/ך/g,'כ').replace(/ם/g,'מ').replace(/ן/g,'נ').replace(/ף/g,'פ').replace(/ץ/g,'צ').replace(/ё/g,'е');}
 function lev(a,b){const m=a.length,n=b.length;if(Math.abs(m-n)>1)return 2;const d=Array.from({length:m+1},(_,i)=>[i]);for(let j=1;j<=n;j++)d[0][j]=j;for(let i=1;i<=m;i++)for(let j=1;j<=n;j++)d[i][j]=Math.min(d[i-1][j]+1,d[i][j-1]+1,d[i-1][j-1]+(a[i-1]===b[j-1]?0:1));return d[m][n];}
-let NN=null; function nnames(){ if(!NN)NN=PRODUCTS.map(p=>norm(p.name.he)+' '+norm(p.m)); return NN; }
+let NN=null, NN0=null; function nnames(){ if(!NN){NN0=PRODUCTS.map(p=>norm(p.name.he).trim()); NN=PRODUCTS.map((p,i)=>NN0[i]+' '+norm(p.m));} return NN; }
 function heTerms(q){ const nq=norm(q).trim(); if(!nq)return []; if(/[֐-׿\d]/.test(nq))return [nq];
   const t=new Set(); for(const s of SYN){ if(norm(s.ru).includes(nq)||norm(s.am).includes(nq)){ t.add(norm(s.he).replace(/[\d%×.]+.*$/,'').trim().split(' ').slice(0,2).join(' ')); } } return t.size?[...t]:[nq]; }
 let lastFound=0;
 function searchProducts(q,lim){ const terms=heTerms(q); if(!terms.length){lastFound=0;return [];} const names=nnames(); const sc=new Float32Array(PRODUCTS.length); let hits=0;
   for(const nq of terms){ const words=nq.split(/\s+/).filter(Boolean);
     for(let i=0;i<names.length;i++){ const n=names[i]; let s0=0;
-      if(words.every(w=>n.includes(w))){ s0=2; if(n.startsWith(nq))s0=3.2; else if(n.startsWith(words[0])||n.includes(' '+words[0]))s0=2.6; }
+      if(words.every(w=>n.includes(w))){ s0=2; if(n.startsWith(nq))s0=3.2; else if(n.startsWith(words[0])||n.includes(' '+words[0]))s0=2.6;
+        const n0=NN0[i]; if(n0===nq||n0===nq+'ות'||n0===nq+'ים'||n0+'ות'===nq||n0+'ים'===nq||n0.replace(/(ה|ות|ים)$/,'')===nq.replace(/(ה|ות|ים)$/,''))s0=4.2; else if(PRODUCTS[i].w&&n.startsWith(words[0]))s0=Math.max(s0,3.5); }
       if(s0>sc[i]){ if(!sc[i])hits++; sc[i]=s0; } } }
   if(hits<5&&terms[0].length>=3){ const nq=terms[0]; for(let i=0;i<names.length;i++){ if(sc[i])continue; const ws=names[i].split(/[\s,()]+/); if(ws.some(w=>lev(w,nq)<=1||(w.length>=nq.length&&lev(w.slice(0,nq.length),nq)<=1))){sc[i]=1;hits++;} } }
   const idx=[]; for(let i=0;i<sc.length;i++)if(sc[i])idx.push(i);
@@ -1132,6 +1204,14 @@ function wireFixed(){ const el=$('listsBody');
   el.querySelectorAll('[data-make]').forEach(b=>b.onclick=()=>{const sid=b.dataset.make;makeListsFrom(()=>sid);});
   el.querySelectorAll('[data-makesplit]').forEach(b=>b.onclick=()=>{const sp=basketCalc().split;makeListsFrom(i=>sp.asg[i]);});
 }
+function wireCopySite(){ $('listsBody').querySelectorAll('[data-copysite]').forEach(b=>b.onclick=async()=>{ const t=b.dataset.copysite.split(',').filter(Boolean).map(i=>{const it=state.items.find(x=>x.pid===+i)||state.fixed.find(x=>x.pid===+i); return PRODUCTS[+i].name.he+(it&&it.qty>1?' ×'+it.qty:'');}).join('\n');
+  try{ await navigator.clipboard.writeText(t); announce(T('copied')); }catch(e){ announce(T('copyFail')); } }); }
+function wireFinish(){ wireCopySite(); const fb=$('finBtn'); if(fb)fb.onclick=()=>{finOpen=!finOpen;renderLists();$('finBtn').focus();};
+  const fa=$('finAll'); if(fa)fa.onclick=()=>{finOpen=false;renderLists();announce(T('keptAll'));};
+  const fs=$('finSplit'); if(fs)fs.onclick=()=>{ const sid=fs.dataset.s, f=finishCalc(); for(const it of f.best.moved){ it.sid=sid; } const m={}; state.items=state.items.filter(it=>{const k=it.pid+'|'+it.sid;if(m[k]){m[k].qty+=it.qty;return false;}m[k]=it;return true;}); save(); renderBadge(); finOpen=false; renderLists(); announce(T('movedAside',{s:sName(sid)})); const h=$('lh-'+sid); if(h){h.setAttribute('tabindex','-1');h.focus();} }; }
+function onlineHtml(sid,ids){ const s=storeObj(sid), o=ONLINE[s.chain];
+  if(!o) return `<p class="hint" style="margin:.4rem 0 0">🚚 ${esc(T('noOnline',{s:sName(sid)}))}</p>`;
+  return `<div class="online"><p class="hint" style="margin:0 0 .4rem">${esc(T('deliveryNote'))}</p><div class="row2" style="margin:0"><a class="navl" href="${o.url}" target="_blank" rel="noopener">${esc(T('deliveryBtn',{s:sName(sid)}))}${o.pickup?' '+esc(T('pickupNote')):''}</a><button class="lnk" data-copysite="${esc(ids)}">${esc(T('copyForSite'))}</button></div></div>`; }
 function wireShare(){ const c=$('shCopy'); if(c)c.onclick=async()=>{ try{ await navigator.clipboard.writeText(shareLink()); announce(T('copied')); }catch(e){ announce(T('copyFail')); } }; }
 function moveBack(sid){state.items.forEach(it=>{if(it.sid===sid)it.sid=it.fromSid;});const m={};state.items=state.items.filter(it=>{const k=it.pid+'|'+it.sid;if(m[k]){m[k].qty+=it.qty;return false;}m[k]=it;return true;});save();renderBadge();renderLists();announce(T('movedBack'));$('listsBody').querySelector('h3')&&$('main').focus();}
 async function copyLists(){const g={};state.items.forEach(it=>{(g[it.sid]=g[it.sid]||[]).push(it);});let t='🛒 '+T('appName')+'\n';
