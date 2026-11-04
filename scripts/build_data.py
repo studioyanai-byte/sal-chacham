@@ -45,6 +45,10 @@ def store_meta(s, files, store):
                 return d
     return {}
 
+BAD_M = {'', 'unknown', 'משתנה', 'לא ידוע', 'כללי', 'ללא', 'ללא יצרן', 'n/a', 'none', '-', '.', '0'}
+def good_m(m):
+    return (m or '').strip().lower() not in BAD_M
+
 def parse_prices(raw):
     root = parse(raw); out = {}
     for it in root.iter():
@@ -151,7 +155,8 @@ def main():
     for prices, _ in per_store:
         for code, d in prices.items():
             names[code][d['n']] += 1
-            if code not in info: info[code] = d
+            if code not in info: info[code] = dict(d)
+            elif not good_m(info[code].get('m')) and good_m(d.get('m')): info[code]['m'] = d['m']   # take manufacturer from any chain that has it
     codes = sorted(names, key=lambda c: (-sum(1 for p, _ in per_store if c in p), c))
     idx = {c: i for i, c in enumerate(codes)}
     P = []

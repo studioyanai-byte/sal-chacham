@@ -157,6 +157,12 @@ html.hc .deal{background:#000;color:#fff;border-color:#ffeb3b} html.hc .sprice s
 .wres button{width:100%;display:flex;align-items:center;gap:.6rem;min-height:3.4rem;border:0;border-bottom:1px solid var(--line);background:none;padding:.45rem .2rem;text-align:start}
 .wres .wn{flex:1;min-width:0}.wres .wn small{display:block;color:var(--muted);font-size:.8rem}
 .wres .wp{font-weight:800;text-align:end;white-space:nowrap}.wres .wp small{display:block;font-weight:700;font-size:.75rem}
+.wres li.bestp button{background:#e3f5e9;border:2px solid #1a7f3c;border-radius:.8rem;padding:.55rem .5rem;margin:.2rem 0}
+.btag{display:inline-block;background:#1a7f3c;color:#fff;font-size:.75rem;font-weight:800;border-radius:.5rem;padding:.05rem .45rem;margin-inline-end:.35rem}
+.wres .wn small.bby{color:#0d5c2a;font-weight:700}
+.brand{display:inline-block;font-size:.78rem;font-weight:700;color:#3d4a44;background:#eef1ef;border-radius:.4rem;padding:0 .35rem}
+.mfr{font-size:.9rem}
+html.hc .wres li.bestp button{background:#000;border-color:#8ef0b6} html.hc .brand{background:#000;color:#fff;border:1px solid #fff} html.hc .wres .wn small.bby{color:#8ef0b6!important}
 .wbest{padding:1rem;background:#e9f7ee;border-bottom:1px solid var(--line)}
 .wbest .bp{font-size:2rem;font-weight:800;line-height:1.15;color:var(--brand-d)}
 .wbest .bs{font-size:1.05rem;font-weight:800}
@@ -406,6 +412,7 @@ he:{ name:'עברית', dir:'rtl',
  eqNote:'מוצר מקביל ברשת זו', similarH:'מוצרים דומים בסניפים אחרים', staleNote:'מחירי הסניף מ־{t}', addCart:'הוסף לעגלה', asideTag:'🔴 שים בצד – ב{s} זול ב־{p}', asideToast:'🔴 שים בצד: ב{s} זה זול ב־{p}', okToast:'✔️ נוסף לעגלה – מחיר טוב', finishBtn:'🧾 סיימתי – איפה הכי משתלם?', finH:'סיכום הקנייה', optAll:'לקנות הכול כאן', optSplit:'לקנות כאן הכול חוץ מהמוצרים שבצד, ואותם ב{s}', optSave:'חיסכון של {p}', optAllBtn:'קונה הכול כאן', optSplitBtn:'מפצל – צור רשימה ל{s}', finWorth:'👍 ההמלצה: לפצל. החיסכון שווה עצירה נוספת ({km}).', finNot:'🤔 ההמלצה: לקנות הכול כאן – החיסכון קטן מדי בשביל עוד עצירה.', finNone:'אין מוצרים בצד – הכול כאן במחיר טוב. אפשר לגשת לקופה!', asideN:'{n} מוצרים בצד', movedAside:'המוצרים שבצד נוספו לרשימה של {s}', keptAll:'מעולה – הכול נשאר בעגלה',
  deliveryBtn:'🚚 הזמנה אונליין מ{s}', deliveryNote:'אופציה: במקום לנסוע – להזמין מאתר הרשת. המחירים באתר יכולים להיות שונים מהסניף, ויש דמי משלוח ומינימום הזמנה. מבצעים נקבעים לפי יום הליקוט.', noOnline:'ל{s} אין כרגע אתר הזמנות מחובר – אפשר רק להגיע לסניף.', copyForSite:'📋 העתק רשימה לאתר', pickupNote:'(בעיקר איסוף עצמי מהסניף)',
  homeH:'🏠 לפני שיוצאים מהבית', homeBest:'הרשימה הקבועה שלך ({n} מוצרים) הכי משתלמת ב{s}: {t}', homeSave:'חיסכון של {p} לעומת {w}', homeOpen:'פתחו את ההשוואה המלאה', homeEmpty:'בנו רשימת קניות קבועה – ולפני כל יציאה תראו כאן איפה הכי משתלם לקנות אותה.', homeBuild:'⭐ לבניית הרשימה הקבועה', homeMiss:'({n} מוצרים לא נמכרים שם)',
+ mfr:'יצרן', bestTag:'💚 הכי משתלם', bestByUnit:'הכי משתלם לפי מחיר ל{u}', bestByPrice:'הכי משתלם לפי מחיר',
  nbScan:'סריקה', nbLists:'הרשימות שלי', nbInfo:'מידע ונגישות',
  listsH:'הרשימות שלי', emptyLists:'עוד אין כלום ברשימות. סרקו מוצר והחליטו: קונים כאן, או מוסיפים לרשימה של סופר זול יותר.',
  ifHere:'אם הייתם קונים הכול בסניף שבו סרקתם: {p}', splitPay:'בפיצול הקנייה תשלמו {p} ותחסכו', storesItems:'{s} סניפים · {i} מוצרים',
@@ -478,6 +485,7 @@ ru:{ name:'Русский', dir:'ltr',
  eqNote:'аналогичный товар в этой сети', similarH:'Похожие товары в других магазинах', staleNote:'цены магазина от {t}', addCart:'В корзину', asideTag:'🔴 Отложите – в {s} дешевле на {p}', asideToast:'🔴 Отложите: в {s} дешевле на {p}', okToast:'✔️ В корзине – хорошая цена', finishBtn:'🧾 Закончил – где выгоднее?', finH:'Итог покупки', optAll:'Купить всё здесь', optSplit:'Купить здесь всё, кроме отложенного, а отложенное – в {s}', optSave:'экономия {p}', optAllBtn:'Покупаю всё здесь', optSplitBtn:'Разделить – список для {s}', finWorth:'👍 Рекомендация: разделить. Экономия стоит дополнительной остановки ({km}).', finNot:'🤔 Рекомендация: купить всё здесь – экономия слишком мала для ещё одной остановки.', finNone:'Отложенных товаров нет – всё здесь по хорошей цене. Можно на кассу!', asideN:'Отложено товаров: {n}', movedAside:'Отложенные товары добавлены в список {s}', keptAll:'Отлично – всё осталось в корзине',
  deliveryBtn:'🚚 Заказать онлайн в {s}', deliveryNote:'Вариант: вместо поездки – заказать на сайте сети. Цены на сайте могут отличаться от магазина, есть стоимость доставки и минимальный заказ. Акции действуют по дню сборки заказа.', noOnline:'У сети {s} пока нет подключённого сайта заказов – только визит в магазин.', copyForSite:'📋 Скопировать список для сайта', pickupNote:'(в основном самовывоз из магазина)',
  homeH:'🏠 Перед выходом из дома', homeBest:'Ваш постоянный список ({n} товаров) выгоднее всего в {s}: {t}', homeSave:'Экономия {p} по сравнению с {w}', homeOpen:'Открыть полное сравнение', homeEmpty:'Составьте постоянный список – и перед каждым выходом здесь будет видно, где выгоднее его купить.', homeBuild:'⭐ Составить постоянный список', homeMiss:'({n} товаров там не продаются)',
+ mfr:'Производитель', bestTag:'💚 Выгоднее всего', bestByUnit:'выгоднее всего по цене за {u}', bestByPrice:'выгоднее всего по цене',
  nbScan:'Сканер', nbLists:'Мои списки', nbInfo:'Инфо и доступность',
  listsH:'Мои списки', emptyLists:'Списки пока пусты. Отсканируйте товар и решите: купить здесь или добавить в список более дешёвого магазина.',
  ifHere:'Если бы вы купили всё там, где сканировали: {p}', splitPay:'Разделив покупку, вы заплатите {p} и сэкономите', storesItems:'Магазинов: {s} · товаров: {i}',
@@ -550,6 +558,7 @@ am:{ name:'አማርኛ', dir:'ltr',
  eqNote:'በዚህ ሰንሰለት ተመሳሳይ ምርት', similarH:'በሌሎች ሱቆች ተመሳሳይ ምርቶች', staleNote:'የሱቁ ዋጋዎች ከ{t}', addCart:'ወደ ጋሪ ጨምር', asideTag:'🔴 ለይተው ያስቀምጡ – በ{s} በ{p} ይረክሳል', asideToast:'🔴 ለይተው ያስቀምጡ፦ በ{s} በ{p} ይረክሳል', okToast:'✔️ ወደ ጋሪ ተጨምሯል – ጥሩ ዋጋ', finishBtn:'🧾 ጨርሻለሁ – የት ይሻላል?', finH:'የግዢ ማጠቃለያ', optAll:'ሁሉንም እዚህ መግዛት', optSplit:'ከተለዩት በስተቀር ሁሉንም እዚህ፣ የተለዩትን በ{s}', optSave:'{p} ቁጠባ', optAllBtn:'ሁሉንም እዚህ እገዛለሁ', optSplitBtn:'ከፋፍል – ለ{s} ዝርዝር ፍጠር', finWorth:'👍 ምክር፦ ከፋፍሉ። ቁጠባው ተጨማሪ ጉዞ ይጠቅማል ({km})።', finNot:'🤔 ምክር፦ ሁሉንም እዚህ ይግዙ – ቁጠባው ለተጨማሪ ጉዞ ትንሽ ነው።', finNone:'የተለየ ምርት የለም – ሁሉም እዚህ በጥሩ ዋጋ ነው። ወደ ክፍያ መሄድ ይችላሉ!', asideN:'{n} ምርቶች ተለይተዋል', movedAside:'የተለዩት ምርቶች ወደ {s} ዝርዝር ተጨምረዋል', keptAll:'በጣም ጥሩ – ሁሉም በጋሪው ውስጥ ቀርቷል',
  deliveryBtn:'🚚 ከ{s} በመስመር ላይ ይዘዙ', deliveryNote:'አማራጭ፦ ከመሄድ ይልቅ ከሰንሰለቱ ድረ-ገጽ ማዘዝ። በድረ-ገጹ ያሉ ዋጋዎች ከሱቁ ሊለዩ ይችላሉ፤ የማድረሻ ክፍያና ዝቅተኛ ትዕዛዝ አለ። ቅናሾች በዝግጅቱ ቀን ይወሰናሉ።', noOnline:'{s} ገና የተገናኘ የትዕዛዝ ድረ-ገጽ የለውም – ወደ ሱቁ መሄድ ብቻ።', copyForSite:'📋 ዝርዝሩን ለድረ-ገጹ ቅዳ', pickupNote:'(በአብዛኛው ከሱቁ መውሰድ)',
  homeH:'🏠 ከቤት ከመውጣትዎ በፊት', homeBest:'ቋሚ ዝርዝርዎ ({n} ምርቶች) በ{s} በጣም ርካሽ ነው፦ {t}', homeSave:'ከ{w} ጋር ሲነጻጸር {p} ቁጠባ', homeOpen:'ሙሉ ንጽጽሩን ይክፈቱ', homeEmpty:'ቋሚ የግዢ ዝርዝር ይስሩ – ከመውጣትዎ በፊት የት መግዛት እንደሚሻል እዚህ ያያሉ።', homeBuild:'⭐ ቋሚ ዝርዝር ለመስራት', homeMiss:'({n} ምርቶች እዚያ አይሸጡም)',
+ mfr:'አምራች', bestTag:'💚 በጣም አዋጭ', bestByUnit:'በ{u} ዋጋ በጣም አዋጭ', bestByPrice:'በዋጋ በጣም አዋጭ',
  nbScan:'ቅኝት', nbLists:'የእኔ ዝርዝሮች', nbInfo:'መረጃና ተደራሽነት',
  listsH:'የእኔ ዝርዝሮች', emptyLists:'ዝርዝሮቹ ገና ባዶ ናቸው። ምርት ይቃኙና ይወስኑ፦ እዚህ ይግዙ ወይም ርካሽ ሱቅ ዝርዝር ውስጥ ያስገቡ።',
  ifHere:'ሁሉንም በቃኙበት ሱቅ ቢገዙ፦ {p}', splitPay:'ግዢውን ሲከፋፍሉ {p} ይከፍላሉ፤ የሚቆጥቡት', storesItems:'{s} ሱቆች · {i} ምርቶች',
@@ -715,6 +724,28 @@ function pSize(p){if(p.produce)return T('perKg'); if(!p.q||!p.u)return ''; const
 function unitPrice(p,price){ if(p.produce||!p.q||!p.u)return null; let per,lab;
   if(p.u==='g'){per=price/(p.q/100);lab='g100';} else if(p.u==='ml'){per=price/(p.q/100);lab='ml100';} else if(p.u==='kg'){per=price/p.q;lab='kg';} else if(p.u==='l'){per=price/p.q;lab='l';} else {if(p.q<=1)return null; per=price/p.q;lab='u';}
   return T('perUnit',{p:money(per),u:(I18N[L].perLabel[lab]||I18N.he.perLabel[lab])}); }
+const BADM=/^(unknown|משתנה|לא ידוע|לא מוגדר|כללי|ללא|ללא יצרן|יצור עצמי|ייצור עצמי|שונים|n\/a|none|-|\.|0)$/i;
+function cleanM(m){ m=(m||'').replace(/["'״׳]/g,'').replace(/\s*(בע\s*מ|בעמ|בע|ltd\.?|inc\.?)\s*$/i,'').replace(/\s+/g,' ').trim(); return BADM.test(m)||m.length<2?'':m; }
+const EXTRA_BRANDS=['תנובה','שטראוס','אסם','עלית','טרה','יטבתה','תפוגן','פרי ניר','מילוטל','עוף טוב','מאמא עוף','זוגלובק','קוקה קולה','פריגת','פרימור','ויליפוד','סוגת','נסטלה','קנור','תלמה','פילסברי','יכין','מעדנות','שופרסל','רמי לוי','יוחננוף','טיב טעם','אושר עד','מחלבות גד','שמרת הזורע','גד','הנמל','ויסוצקי','עלמה','דנונה','אחלה','שקדיה','בייגל בייגל','מאפיית אנג\'ל','אנג\'ל','ברמן','יוניליוור','פרוקטר','סנו','כרמית','עטרה','מיה','טמפו','ספרינג','יפאורה','נביעות','מי עדן','פפסי','קרלסברג','גולדסטאר','היינץ','הלמנס','ליימן','פיצוחי','אורגניק','יופלה','מולר','אלפרו','פרוביוטיק'];
+let BRANDS=null; function brandList(){ if(BRANDS)return BRANDS; const c=new Map(); for(const p of PRODUCTS){ const m=cleanM(p.m); if(m&&m.length>=3)c.set(m,(c.get(m)||0)+1); }
+  const set=new Set(EXTRA_BRANDS); for(const [m,n] of c) if(n>=3&&m.length<=18) set.add(m); BRANDS=[...set].sort((a,b)=>b.length-a.length); return BRANDS; }
+function pBrand(p){ if(!p||p.custom)return ''; if(p._b!==undefined)return p._b; let m=cleanM(p.m);
+  if(!m){ const n=' '+(p.name.he||'')+' '; for(const b of brandList()){ if(n.includes(' '+b+' ')){ m=b; break; } } }
+  return p._b=m; }
+function pMeta(p){ return [pSize(p),pBrand(p)].filter(Boolean).join(' · '); }
+// comparable value for "best buy" among different products: price per base unit when comparable
+function normUnit(p,price){ if(p.produce)return {b:'kg',v:price}; if(!p.q||!p.u)return null; const q=p.q;
+  if(p.u==='g')return {b:'kg',v:price/(q/1000)}; if(p.u==='kg')return {b:'kg',v:price/q}; if(p.u==='ml')return {b:'l',v:price/(q/1000)}; if(p.u==='l')return {b:'l',v:price/q}; return {b:'u',v:price/Math.max(1,q)}; }
+function bestPick(rows){ // rows: [{p,price}] -> {id,by}
+  const nu=rows.map(r=>({...r,n:normUnit(r.p,r.price)})).filter(r=>r.price>0); if(nu.length<2)return null;
+  const cnt={}; nu.forEach(r=>{ if(r.n)cnt[r.n.b]=(cnt[r.n.b]||0)+1; }); const base=Object.keys(cnt).sort((a,b)=>cnt[b]-cnt[a])[0];
+  if(base&&cnt[base]>=2&&cnt[base]>=nu.length*0.6){ const c=nu.filter(r=>r.n&&r.n.b===base).sort((a,b)=>a.n.v-b.n.v); return {id:c[0].p.id,by:base}; }
+  const c=nu.sort((a,b)=>a.price-b.price); return {id:c[0].p.id,by:null}; }
+function bestLabel(bp){ if(!bp)return ''; const u={kg:L==='he'?'ק״ג':L==='ru'?'кг':'ኪ.ግ',l:L==='he'?'ליטר':L==='ru'?'литр':'ሊትር',u:L==='he'?'יחידה':L==='ru'?'штуку':'አሃድ'}[bp.by]; return bp.by?T('bestByUnit',{u}):T('bestByPrice'); }
+function resRows(list,R,attr){ const rows=list.map(p=>{const r=cheapestIn(p.id,R); return {p,r,price:r[0]?r[0].price:0};}).filter(x=>x.r.length);
+  const bp=bestPick(rows); if(bp){ const k=rows.findIndex(x=>x.p.id===bp.id); if(k>0)rows.unshift(rows.splice(k,1)[0]); }
+  return rows.map(({p,r})=>{ const b=r[0], hi=r[r.length-1], isB=bp&&bp.id===p.id, up=unitPrice(p,b.price);
+    return `<li${isB?' class="bestp"':''}><button ${attr}="${p.id}">${isB?`<span class="sr-only">${esc(T('bestTag'))}: </span>`:''}<span aria-hidden="true" style="font-size:1.4rem">${p.emoji}</span><span class="wn">${isB?`<span class="btag" aria-hidden="true">${esc(T('bestTag'))}</span>`:''}${esc(pName(p))}${pBrand(p)?` <span class="brand">${esc(pBrand(p))}</span>`:''}<small>${esc([pSize(p),up].filter(Boolean).join(' · '))}</small><small>${esc(T('cheapestAt',{s:sName(b.s.id)+' '+sCity(b.s.id),p:kmTxt(b.s.km)}))}</small>${isB?`<small class="bby">${esc(bestLabel(bp))}</small>`:''}</span><span class="wp">${money(b.price)}${r.length>1&&hi.price>b.price?`<small style="color:var(--brand)"><bdi dir="ltr">−${Math.round((hi.price-b.price)/hi.price*100)}%</bdi></small>`:''}</span></button></li>`; }).join(''); }
 function promoText(pr){ if(!pr)return ''; if(pr.mq>1) return T('promo').multi.replace('{n}',pr.mq).replace('{p}',money(pr.t))+' · '+money(pr.e)+' '+T('perUnitShort'); return (L==='he'&&pr.d)?pr.d:T('promo').sale; }
 function promoBadge(pa){ const pr=pa.promo; if(!pr)return ''; return pr.mq>1?T('dealBadge',{n:pr.mq,t:money(pr.t)}):T('saleSingle',{e:money(pr.e),r:money(pa.reg)}); }
 function rowNote(pa){ const pr=pa&&pa.promo; if(!pr||pr.mq<=1)return ''; return `<small class="pn">${esc(pr.applies?T('perUnitInDeal',{n:pr.mq,t:money(pr.t)}):T('perOneDeal',{n:pr.mq}))}</small>`; }
@@ -854,7 +885,7 @@ function search(){
   const hits=searchProducts(q,30);
   if(!hits.length){box.innerHTML=`<li class="hint">${esc(T('notFound'))}</li>`;return;}
   if(hits.length===1){showProduct(hits[0].id);return;}
-  box.innerHTML=hits.map(p=>`<li><button data-pi="${p.id}"><span><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} <small class="hint">${esc(pSize(p))}</small></span><span aria-hidden="true">›</span></button></li>`).join('');
+  box.className='wres'; box.innerHTML=resRows(hits,state.radius,'data-pi')||hits.map(p=>`<li><button data-pi="${p.id}"><span class="wn">${esc(pName(p))} <small>${esc(pMeta(p))}</small></span></button></li>`).join('');
 }
 function showErr(html){const e=$('scanErr');e.innerHTML=html;e.classList.remove('hidden');}
 function hideErr(){$('scanErr').classList.add('hidden');}
@@ -930,6 +961,7 @@ function showProduct(pi,noScroll){
    <div class="verdict v-${r.k}">
      <p class="lbl" style="margin:0"><span aria-hidden="true">${r.icon}</span> <span>${esc(T('r_'+r.k))}</span> · <span>${esc(sFull(here))}</span></p>
      <h2 id="pTitle" tabindex="-1"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} <span class="size">${esc(pSize(p))}</span></h2>
+     ${pBrand(p)?`<p class="mfr" style="margin:0">🏭 ${esc(T('mfr'))}: <strong>${esc(pBrand(p))}</strong></p>`:''}
      ${hereOk?`<p class="price" style="margin:0">${money(ph.price)} <span class="unit">${esc(p.produce?T('perKg'):T('unitWord'))}</span></p>
      ${up?`<p class="unit" style="margin:0">${esc(up)}</p>`:''}`:`<p class="price" style="margin:0;font-size:1.2rem">${esc(T('notHere'))}</p>`}
      ${r.ref?`<p class="ref" style="margin:0">${esc(T('normal',{p:money(r.ref)}))}${hereOk&&r.k!=='na'?` · <span dir="ltr">${esc(dTxt)}</span>`:''}</p>`:''}
@@ -964,7 +996,7 @@ function showProduct(pi,noScroll){
       <a class="navl" href="${wazeUrl(n.s.id)}" target="_blank" rel="noopener" >🧭 Waze<span class="sr-only"> – ${esc(sFull(n.s.id))}</span></a>
       <a class="navl" href="${mapsUrl(n.s.id)}" target="_blank" rel="noopener" >🗺️ ${esc(T('maps'))}<span class="sr-only"> Google – ${esc(sFull(n.s.id))}</span></a></div>`}</li>`;});
   h+='</ul>';
-  const sim=similarFor(pi,R); if(sim.length){ h+=`<h3 class="sect" style="margin:0">${esc(T('similarH'))}</h3><ul class="stores">`+sim.map(o=>`<li class="store"><div class="l1"><span aria-hidden="true">${PRODUCTS[o.pi].emoji}</span><div class="sinfo"><div class="sname">${esc(pName(PRODUCTS[o.pi]))}</div><div class="smeta">${esc(sName(o.s.id))} · ${esc(sCity(o.s.id))} · ${esc(kmTxt(o.s.km))}</div></div><div class="sprice">${money(o.price)}</div></div><div class="l2"><button class="addto" data-open="${o.pi}">🔍 ${esc(T('openWhere'))}<span class="sr-only"> – ${esc(pName(PRODUCTS[o.pi]))}</span></button></div></li>`).join('')+'</ul>'; }
+  const sim=similarFor(pi,R); if(sim.length){ h+=`<h3 class="sect" style="margin:0">${esc(T('similarH'))}</h3><ul class="stores">`+sim.map(o=>`<li class="store"><div class="l1"><span aria-hidden="true">${PRODUCTS[o.pi].emoji}</span><div class="sinfo"><div class="sname">${esc(pName(PRODUCTS[o.pi]))}${pBrand(PRODUCTS[o.pi])?` <span class="brand">${esc(pBrand(PRODUCTS[o.pi]))}</span>`:''}</div><div class="smeta">${esc(sName(o.s.id))} · ${esc(sCity(o.s.id))} · ${esc(kmTxt(o.s.km))}</div></div><div class="sprice">${money(o.price)}</div></div><div class="l2"><button class="addto" data-open="${o.pi}">🔍 ${esc(T('openWhere'))}<span class="sr-only"> – ${esc(pName(PRODUCTS[o.pi]))}</span></button></div></li>`).join('')+'</ul>'; }
   h+='</article>';
   const pc=$('productCard'); pc.innerHTML=h; $('results').innerHTML='';
   $('qDec').onclick=()=>chq(-1); $('qInc').onclick=()=>chq(1);
@@ -1006,8 +1038,7 @@ function renderWhereResults(){
   const q=$('wq').value, list=matchProducts(q,60), R=state.radius;
   $('wCount').textContent=q.trim()?(lastFound>list.length?T('shown',{n:lastFound,m:list.length}):T('resultsN',{n:list.length})):T('popular',{n:list.length,t:PRODUCTS.length.toLocaleString()});
   if(!list.length){ $('wRes').innerHTML=`<li class="hint">${esc(T('notFound'))}</li>`; return; }
-  $('wRes').innerHTML=list.map(p=>{const r=cheapestIn(p.id,R), b=r[0], hi=r[r.length-1]; if(!b)return '';
-    return `<li><button data-wpi="${p.id}"><span aria-hidden="true" style="font-size:1.4rem">${p.emoji}</span><span class="wn">${esc(pName(p))} <small>${esc(T('cheapestAt',{s:sName(b.s.id)+' '+sCity(b.s.id),p:kmTxt(b.s.km)}))}</small></span><span class="wp">${money(b.price)}${r.length>1&&hi.price>b.price?`<small style="color:var(--brand)"><bdi dir="ltr">−${Math.round((hi.price-b.price)/hi.price*100)}%</bdi></small>`:''}</span></button></li>`;}).join('');
+  $('wRes').innerHTML=q.trim()?resRows(list,R,'data-wpi'):resRows(list,R,'data-wpi').replace(/ class="bestp"/,'').replace(/<span class="btag"[^>]*>.*?<\/span>|<small class="bby">.*?<\/small>|<span class="sr-only">[^<]*: <\/span>/g,'');
 }
 $('wq').addEventListener('input',()=>{ clearTimeout(wTimer); wTimer=setTimeout(()=>{ wCur=null; $('whereCard').innerHTML=''; renderWhereResults(); },200); });
 $('whereForm').onsubmit=e=>{ e.preventDefault(); wCur=null; $('whereCard').innerHTML=''; renderWhereResults(); const l=matchProducts($('wq').value); if(l.length===1)showWhere(l[0].id); };
@@ -1019,6 +1050,7 @@ function showWhere(pi,noScroll){
   const hpa=priceAt(pi,here,wQty), hp=hpa?hpa.price:0, up=unitPrice(p,b.price);
   let h=`<article class="card" aria-labelledby="wTitle"><div class="wbest">
     <h2 id="wTitle" tabindex="-1"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} <span class="hint" style="font-weight:400">${esc(pSize(p))}</span></h2>
+    ${pBrand(p)?`<p class="mfr" style="margin:.1rem 0 0">🏭 ${esc(T('mfr'))}: <strong>${esc(pBrand(p))}</strong></p>`:''}
     <p style="margin:.4rem 0 0;font-weight:700">🏆 ${esc(T('whereBest',{r:kmTxt(R)}))}</p>
     <p class="bs" style="margin:.1rem 0 0">${esc(sFull(b.s.id))} · ${esc(kmTxt(b.s.km))}</p>
     <p class="bp" style="margin:0">${money(b.price)} <span class="hint">${esc(p.produce?T('perKg'):T('unitWord'))}</span></p>${wQty>1?`<p style="margin:0;font-weight:700">${esc(T('totalFor',{t:money(b.price*wQty),n:wQty}))}</p>`:''}
@@ -1097,7 +1129,7 @@ function fixedHtml(){
     <div id="fxlist" role="listbox" aria-label="${esc(T('fxAddLbl'))}" class="sugg hidden"></div>
     <p id="fxsr" class="sr-only" role="status" aria-live="polite"></p></div>`;
   if(!state.fixed.length) h+=`<p class="hint" style="padding:.8rem .9rem;margin:0">${esc(T('fixedEmpty'))}</p>`;
-  else { h+='<ul class="items">'+state.fixed.map((f,ix)=>{const p=f.custom?{emoji:'📝',name:{he:f.custom,ru:f.custom,am:f.custom}}:PRODUCTS[f.pid]; return `<li class="li"><span style="flex:1;min-width:0"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))}<small>${f.custom?esc(T('customNoPrice')):esc(pSize(p))}</small></span>
+  else { h+='<ul class="items">'+state.fixed.map((f,ix)=>{const p=f.custom?{emoji:'📝',name:{he:f.custom,ru:f.custom,am:f.custom}}:PRODUCTS[f.pid]; return `<li class="li"><span style="flex:1;min-width:0"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))}<small>${f.custom?esc(T('customNoPrice')):esc(pMeta(p))}</small></span>
       <div class="qty" role="group" aria-label="${esc(T('qty'))}: ${esc(pName(p))}"><button data-fq="${ix}" data-d="-1" aria-label="${esc(T('dec'))}">−</button><output>${f.qty}</output><button data-fq="${ix}" data-d="1" aria-label="${esc(T('inc'))}">+</button></div>
       <button class="x" data-frm="${ix}" aria-label="${esc(T('remove',{n:pName(p)}))}">✕</button></li>`;}).join('')+'</ul>';
     h+=`<div style="padding:.8rem .9rem"><button class="bigscan" id="bestBtn" aria-expanded="${basketOpen}" aria-controls="basketRes">${esc(T('bestBtn'))}</button></div><div id="basketRes" role="region" aria-live="polite">${basketOpen?basketHtml():''}</div>`; }
@@ -1133,7 +1165,7 @@ function renderLists(){
   order.forEach(sid=>{const g=groups[sid],sum=g.reduce((a,[it])=>a+(pp(it.pid,sid,it.qty)||0)*it.qty,0),sv=g.reduce((a,[it])=>a+itemSaving(it),0),isH=sid===state.here;
     h+=`<section class="lst" aria-labelledby="lh-${sid}"><div class="lhead"><h3 id="lh-${sid}">${isH?'🛒 '+esc(T('cartHere',{s:sName(sid)})):'📋 '+esc(T('listOf',{s:sName(sid)}))}</h3><div class="m">${esc(sCity(sid))} · ${isH?esc(T('youHere')):esc(kmTxt(storeObj(sid).km))} · ${esc(T('items',{n:g.length}))}</div></div><ul class="items">`;
     g.forEach(([it,ix])=>{const p=PRODUCTS[it.pid],pr=pp(it.pid,sid,it.qty)||0,isv=itemSaving(it);
-      h+=`<li class="li ${it.got?'got':''}"><label><input type="checkbox" data-got="${ix}" ${it.got?'checked':''} aria-label="${esc(T('got',{n:pName(p)}))}"><span><span class="nm"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} ×${it.qty}</span><small>${esc(pSize(p))}${it.fromSid!==sid?' · '+esc(T('scannedAt',{s:sName(it.fromSid)})):''}</small></span></label>
+      h+=`<li class="li ${it.got?'got':''}"><label><input type="checkbox" data-got="${ix}" ${it.got?'checked':''} aria-label="${esc(T('got',{n:pName(p)}))}"><span><span class="nm"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} ×${it.qty}</span><small>${esc(pMeta(p))}${it.fromSid!==sid?' · '+esc(T('scannedAt',{s:sName(it.fromSid)})):''}</small></span></label>
         ${isH?(()=>{const ai=asideInfo(it.pid,it.qty); return ai?`<span class="aside">${esc(T('asideTag',{s:sName(ai.s.id),p:money(ai.sv)}))}</span>`:'';})():''}
         <div class="p">${money(pr*it.qty)}${isv>0.005?`<small>${esc(T('saved',{p:money(isv)}))}</small>`:''}${(()=>{const pa=priceAt(it.pid,sid,it.qty); return pa&&pa.promo&&pa.promo.mq>1?`<small class="pn">${esc(pa.promo.applies?T('perUnitInDeal',{n:pa.promo.mq,t:money(pa.promo.t)}):T('dealHintList',{n:pa.promo.mq,t:money(pa.promo.t)}))}</small>`:'';})()}</div>
         <button class="x" data-rm="${ix}" aria-label="${esc(T('remove',{n:pName(p)}))}">✕</button></li>`;});
@@ -1164,6 +1196,7 @@ function searchProducts(q,lim){ const terms=heTerms(q); if(!terms.length){lastFo
     for(let i=0;i<names.length;i++){ const n=names[i]; let s0=0;
       if(words.every(w=>n.includes(w))){ s0=2; if(n.startsWith(nq))s0=3.2; else if(n.startsWith(words[0])||n.includes(' '+words[0]))s0=2.6;
         const n0=NN0[i]; if(n0===nq||n0===nq+'ות'||n0===nq+'ים'||n0+'ות'===nq||n0+'ים'===nq||n0.replace(/(ה|ות|ים)$/,'')===nq.replace(/(ה|ות|ים)$/,''))s0=4.2; else if(PRODUCTS[i].w&&n.startsWith(words[0]))s0=Math.max(s0,3.5); }
+      if(s0&&s0<4.2){ const ww=' '+n.replace(/[,()%\d]+/g,' ')+' '; if(words.every(w=>ww.includes(' '+w+' ')))s0+=0.7; }
       if(s0>sc[i]){ if(!sc[i])hits++; sc[i]=s0; } } }
   if(hits<5&&terms[0].length>=3){ const nq=terms[0]; for(let i=0;i<names.length;i++){ if(sc[i])continue; const ws=names[i].split(/[\s,()]+/); if(ws.some(w=>lev(w,nq)<=1||(w.length>=nq.length&&lev(w.slice(0,nq.length),nq)<=1))){sc[i]=1;hits++;} } }
   const idx=[]; for(let i=0;i<sc.length;i++)if(sc[i])idx.push(i);
@@ -1179,7 +1212,7 @@ let sugIdx=-1, sugItems=[];
 function renderSugg(){ const inp=$('fxq'), box=$('fxlist'); if(!inp)return; const q=inp.value;
   if(!q.trim()){ box.classList.add('hidden'); inp.setAttribute('aria-expanded','false'); inp.removeAttribute('aria-activedescendant'); sugItems=[]; return; }
   const {m,alt}=suggest(q); sugItems=m.concat(alt); sugIdx=-1; inp.removeAttribute('aria-activedescendant');
-  const opt=(p,i)=>{const b=cheapestIn(p.id,state.radius)[0]; return `<div role="option" id="fxo-${i}" data-sp="${p.id}" aria-selected="false"><span aria-hidden="true" style="font-size:1.3rem">${p.emoji}</span><span class="on">${esc(pName(p))}${inFixed(p.id)?' ⭐':''}<small>${esc([pSize(p),p.m].filter(Boolean).join(' · '))}</small></span>${b?`<small style="font-weight:700;color:var(--brand)">${esc(T('fromP',{p:money(b.price)}))}</small>`:''}</div>`;};
+  const opt=(p,i)=>{const b=cheapestIn(p.id,state.radius)[0]; return `<div role="option" id="fxo-${i}" data-sp="${p.id}" aria-selected="false"><span aria-hidden="true" style="font-size:1.3rem">${p.emoji}</span><span class="on">${esc(pName(p))}${inFixed(p.id)?' ⭐':''}<small>${esc(pMeta(p))}</small></span>${b?`<small style="font-weight:700;color:var(--brand)">${esc(T('fromP',{p:money(b.price)}))}</small>`:''}</div>`;};
   const cust=`<div role="option" id="fxo-c" data-custom="1" aria-selected="false"><span class="on">${esc(T('addCustom',{q:q.trim()}))}</span></div>`;
   if(!sugItems.length){ box.innerHTML=`<p class="hint" style="margin:0;padding:.4rem .7rem">${esc(T('sugNone'))}</p>`+cust; }
   else box.innerHTML=(m.length?`<div role="group" aria-labelledby="gh1"><div class="gh" id="gh1" role="presentation">${esc(T('sugMatch'))}</div>${m.map((p,i)=>opt(p,i)).join('')}</div>`:'')+(alt.length?`<div role="group" aria-labelledby="gh2"><div class="gh" id="gh2" role="presentation">${esc(T('sugAlt'))}</div>${alt.map((p,i)=>opt(p,m.length+i)).join('')}</div>`:'')+cust;
