@@ -182,6 +182,13 @@ html.hc .sugg{background:#000;border:2px solid #fff} html.hc .sugg [role=option]
 .fin .opt b{font-size:1.15rem}.fin .opt small{flex-basis:100%;color:var(--brand-d);font-weight:800}
 .fin .opt.best{background:#e3f1e8;border:1.5px solid var(--brand)}
 html.hc .fin,html.hc .fin .opt{background:#000;color:#fff;border-color:#fff} html.hc .aside{color:#ff8a80} html.hc .fin .opt small{color:#8ef0b6}
+.walert{background:#fff6dc;border:2px solid #b7791f;border-radius:.8rem;padding:.6rem .7rem;margin:.4rem 0 .6rem;color:#4a3000}
+.li.hot{background:#fff6dc}
+.wst{font-weight:700}.wst.hotx{color:#7a4a00!important}
+.wsm{border:1.5px solid #8a968f;background:#fff;border-radius:.6rem;min-height:2.75rem;min-width:2.75rem;padding:0 .5rem;font-size:.8rem;font-weight:700;white-space:nowrap}
+.wsm[aria-pressed="true"]{background:#fff6dc;border-color:#b7791f;color:#4a3000}
+.addto.watch[aria-pressed="true"]{background:#fff6dc;color:#4a3000;border-color:#b7791f}
+html.hc .walert,html.hc .li.hot,html.hc .wsm,html.hc .addto.watch[aria-pressed="true"]{background:#000;color:#fff;border-color:#ffd166} html.hc .wst.hotx{color:#ffd166!important}
 .homec{border:2px solid var(--brand,#0b6b3a)}
 .homeh{margin:0;font-size:1.05rem}
 .online{margin-top:.6rem;padding:.6rem;border:1.5px dashed #8a968f;border-radius:.7rem}
@@ -413,6 +420,7 @@ he:{ name:'עברית', dir:'rtl',
  deliveryBtn:'🚚 הזמנה אונליין מ{s}', deliveryNote:'אופציה: במקום לנסוע – להזמין מאתר הרשת. המחירים באתר יכולים להיות שונים מהסניף, ויש דמי משלוח ומינימום הזמנה. מבצעים נקבעים לפי יום הליקוט.', noOnline:'ל{s} אין כרגע אתר הזמנות מחובר – אפשר רק להגיע לסניף.', copyForSite:'📋 העתק רשימה לאתר', pickupNote:'(בעיקר איסוף עצמי מהסניף)',
  homeH:'🏠 לפני שיוצאים מהבית', homeBest:'הרשימה הקבועה שלך ({n} מוצרים) הכי משתלמת ב{s}: {t}', homeSave:'חיסכון של {p} לעומת {w}', homeOpen:'פתחו את ההשוואה המלאה', homeEmpty:'בנו רשימת קניות קבועה – ולפני כל יציאה תראו כאן איפה הכי משתלם לקנות אותה.', homeBuild:'⭐ לבניית הרשימה הקבועה', homeMiss:'({n} מוצרים לא נמכרים שם)',
  mfr:'יצרן', bestTag:'💚 הכי משתלם', bestByUnit:'הכי משתלם לפי מחיר ל{u}', bestByPrice:'הכי משתלם לפי מחיר',
+ watchOff:'🔔 התראה על ירידת מחיר / מבצע', watchOn:'🔔 במעקב – לחצו להפסקה', watchAdded:'נוסף למעקב. נודיע כשהמחיר ירד או כשיהיה מבצע.', watchRemoved:'הוסר מהמעקב', watchH:'🔔 מוצרים במעקב מחיר', watchHint:'הבדיקה נעשית בכל פתיחה של האפליקציה ובכל עדכון מחירים (המחירים מתעדכנים כל שעה). התראה בטלפון מופיעה רק אם אישרתם התראות בדפדפן.', wDrop:'ירד ב-{p}! עכשיו {n} ב{s}', wPromo:'מבצע חדש: {d} ב{s}', wSame:'ללא שינוי · {n} ב{s}', wUp:'עלה ל-{n}', wSeen:'סמנו כנקרא', alertsH:'🔔 יש {n} עדכוני מחיר על מוצרים שאתם עוקבים אחריהם', alertsOpen:'לצפייה בעדכונים', notifyAsk:'🔔 לקבל התראות גם בטלפון', notifyOn:'✓ התראות בדפדפן מופעלות', notifyNo:'הדפדפן לא מאפשר התראות כאן – העדכונים יופיעו בתוך האפליקציה.', notifTitle:'סל חכם – עדכון מחיר', watchShort:'עקוב', watchShortOn:'במעקב', watchItem:'מעקב מחיר: {n}',
  nbScan:'סריקה', nbLists:'הרשימות שלי', nbInfo:'מידע ונגישות',
  listsH:'הרשימות שלי', emptyLists:'עוד אין כלום ברשימות. סרקו מוצר והחליטו: קונים כאן, או מוסיפים לרשימה של סופר זול יותר.',
  ifHere:'אם הייתם קונים הכול בסניף שבו סרקתם: {p}', splitPay:'בפיצול הקנייה תשלמו {p} ותחסכו', storesItems:'{s} סניפים · {i} מוצרים',
@@ -486,6 +494,7 @@ ru:{ name:'Русский', dir:'ltr',
  deliveryBtn:'🚚 Заказать онлайн в {s}', deliveryNote:'Вариант: вместо поездки – заказать на сайте сети. Цены на сайте могут отличаться от магазина, есть стоимость доставки и минимальный заказ. Акции действуют по дню сборки заказа.', noOnline:'У сети {s} пока нет подключённого сайта заказов – только визит в магазин.', copyForSite:'📋 Скопировать список для сайта', pickupNote:'(в основном самовывоз из магазина)',
  homeH:'🏠 Перед выходом из дома', homeBest:'Ваш постоянный список ({n} товаров) выгоднее всего в {s}: {t}', homeSave:'Экономия {p} по сравнению с {w}', homeOpen:'Открыть полное сравнение', homeEmpty:'Составьте постоянный список – и перед каждым выходом здесь будет видно, где выгоднее его купить.', homeBuild:'⭐ Составить постоянный список', homeMiss:'({n} товаров там не продаются)',
  mfr:'Производитель', bestTag:'💚 Выгоднее всего', bestByUnit:'выгоднее всего по цене за {u}', bestByPrice:'выгоднее всего по цене',
+ watchOff:'🔔 Уведомить о снижении цены / акции', watchOn:'🔔 Отслеживается – нажмите, чтобы отключить', watchAdded:'Добавлено в отслеживание. Сообщим о снижении цены или акции.', watchRemoved:'Удалено из отслеживания', watchH:'🔔 Отслеживаемые товары', watchHint:'Проверка выполняется при каждом открытии приложения и обновлении цен (цены обновляются каждый час). Уведомление на телефоне появится, только если вы разрешили уведомления в браузере.', wDrop:'Подешевело на {p}! Сейчас {n} в {s}', wPromo:'Новая акция: {d} в {s}', wSame:'Без изменений · {n} в {s}', wUp:'Подорожало до {n}', wSeen:'Отметить как прочитанное', alertsH:'🔔 {n} изменений цен на отслеживаемые товары', alertsOpen:'Посмотреть', notifyAsk:'🔔 Получать уведомления на телефон', notifyOn:'✓ Уведомления браузера включены', notifyNo:'Браузер не разрешает уведомления здесь – изменения будут видны в приложении.', notifTitle:'Сал Хахам – изменение цены', watchShort:'Следить', watchShortOn:'Слежу', watchItem:'Отслеживать цену: {n}',
  nbScan:'Сканер', nbLists:'Мои списки', nbInfo:'Инфо и доступность',
  listsH:'Мои списки', emptyLists:'Списки пока пусты. Отсканируйте товар и решите: купить здесь или добавить в список более дешёвого магазина.',
  ifHere:'Если бы вы купили всё там, где сканировали: {p}', splitPay:'Разделив покупку, вы заплатите {p} и сэкономите', storesItems:'Магазинов: {s} · товаров: {i}',
@@ -559,6 +568,7 @@ am:{ name:'አማርኛ', dir:'ltr',
  deliveryBtn:'🚚 ከ{s} በመስመር ላይ ይዘዙ', deliveryNote:'አማራጭ፦ ከመሄድ ይልቅ ከሰንሰለቱ ድረ-ገጽ ማዘዝ። በድረ-ገጹ ያሉ ዋጋዎች ከሱቁ ሊለዩ ይችላሉ፤ የማድረሻ ክፍያና ዝቅተኛ ትዕዛዝ አለ። ቅናሾች በዝግጅቱ ቀን ይወሰናሉ።', noOnline:'{s} ገና የተገናኘ የትዕዛዝ ድረ-ገጽ የለውም – ወደ ሱቁ መሄድ ብቻ።', copyForSite:'📋 ዝርዝሩን ለድረ-ገጹ ቅዳ', pickupNote:'(በአብዛኛው ከሱቁ መውሰድ)',
  homeH:'🏠 ከቤት ከመውጣትዎ በፊት', homeBest:'ቋሚ ዝርዝርዎ ({n} ምርቶች) በ{s} በጣም ርካሽ ነው፦ {t}', homeSave:'ከ{w} ጋር ሲነጻጸር {p} ቁጠባ', homeOpen:'ሙሉ ንጽጽሩን ይክፈቱ', homeEmpty:'ቋሚ የግዢ ዝርዝር ይስሩ – ከመውጣትዎ በፊት የት መግዛት እንደሚሻል እዚህ ያያሉ።', homeBuild:'⭐ ቋሚ ዝርዝር ለመስራት', homeMiss:'({n} ምርቶች እዚያ አይሸጡም)',
  mfr:'አምራች', bestTag:'💚 በጣም አዋጭ', bestByUnit:'በ{u} ዋጋ በጣም አዋጭ', bestByPrice:'በዋጋ በጣም አዋጭ',
+ watchOff:'🔔 ዋጋ ሲቀንስ / ቅናሽ ሲኖር አሳውቀኝ', watchOn:'🔔 እየተከታተለ ነው – ለማቆም ይጫኑ', watchAdded:'ወደ ክትትል ተጨምሯል። ዋጋ ሲቀንስ ወይም ቅናሽ ሲኖር እናሳውቃለን።', watchRemoved:'ከክትትል ተወግዷል', watchH:'🔔 የሚከታተሉ ምርቶች', watchHint:'ፍተሻው መተግበሪያውን በከፈቱ ቁጥርና ዋጋ ሲዘመን ይከናወናል (ዋጋዎች በየሰዓቱ ይዘመናሉ)። በስልክ ማሳወቂያ የሚታየው በአሳሹ ማሳወቂያ ከፈቀዱ ብቻ ነው።', wDrop:'በ{p} ቀንሷል! አሁን {n} በ{s}', wPromo:'አዲስ ቅናሽ፦ {d} በ{s}', wSame:'ለውጥ የለም · {n} በ{s}', wUp:'ወደ {n} ጨምሯል', wSeen:'እንደተነበበ ምልክት አድርግ', alertsH:'🔔 በሚከታተሏቸው ምርቶች ላይ {n} የዋጋ ለውጦች', alertsOpen:'ለውጦቹን ይመልከቱ', notifyAsk:'🔔 በስልክም ማሳወቂያ ተቀበል', notifyOn:'✓ የአሳሽ ማሳወቂያዎች በርተዋል', notifyNo:'አሳሹ እዚህ ማሳወቂያ አይፈቅድም – ለውጦቹ በመተግበሪያው ውስጥ ይታያሉ።', notifTitle:'ሳል ሐሓም – የዋጋ ለውጥ', watchShort:'ተከታተል', watchShortOn:'እየተከታተለ', watchItem:'ዋጋ ተከታተል፦ {n}',
  nbScan:'ቅኝት', nbLists:'የእኔ ዝርዝሮች', nbInfo:'መረጃና ተደራሽነት',
  listsH:'የእኔ ዝርዝሮች', emptyLists:'ዝርዝሮቹ ገና ባዶ ናቸው። ምርት ይቃኙና ይወስኑ፦ እዚህ ይግዙ ወይም ርካሽ ሱቅ ዝርዝር ውስጥ ያስገቡ።',
  ifHere:'ሁሉንም በቃኙበት ሱቅ ቢገዙ፦ {p}', splitPay:'ግዢውን ሲከፋፍሉ {p} ይከፍላሉ፤ የሚቆጥቡት', storesItems:'{s} ሱቆች · {i} ምርቶች',
@@ -686,7 +696,7 @@ function fmtTime(iso){ try{ const d=new Date(iso); const p=n=>String(n).padStart
 const EMB=(document.getElementById('DATA').textContent||'').trim(); if(EMB&&EMB!=='null'&&EMB[0]==='{')loadData(JSON.parse(EMB));
 // ================= STATE =================
 let L='he';
-let state={here:'rl041',radius:10,far:true,items:[],fixed:[],hist:{},lang:'he',a11y:{fs:0,hc:false,ul:false,mo:false}};
+let state={here:'rl041',radius:10,far:true,items:[],fixed:[],watch:[],hist:{},lang:'he',a11y:{fs:0,hc:false,ul:false,mo:false}};
 const LS={get(k){try{return JSON.parse(localStorage.getItem(k)||'null');}catch(e){return null;}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}};
 const STORAGE_OK=(()=>{try{localStorage.setItem('__t','1');localStorage.removeItem('__t');return true;}catch(e){return false;}})();
 let PROF=LS.get('salchacham3:profiles')||{list:[],current:null,lang:'he'}; // device-local user profiles (no password)
@@ -699,14 +709,15 @@ function hydrate(raw){ // persisted by barcode -> in-memory by product index
   state.items=(raw.items||[]).map(it=>({...it,pid:pidOf(it.code)})).filter(it=>it.pid>=0&&st.includes(it.sid)&&st.includes(it.fromSid));
   state.fixed=(raw.fixed||[]).map(f=>f.custom?{custom:String(f.custom),qty:f.qty||1}:{pid:pidOf(f.code),qty:f.qty||1}).filter(f=>f.custom||f.pid>=0);
   state.hist={}; for(const [c,n] of Object.entries(raw.hist||{})){const i=pidOf(c); if(i>=0)state.hist[i]=n;}
+  state.watch=(raw.watch||[]).map(w=>({...w,pid:pidOf(w.code)})).filter(w=>w.pid>=0);
 }
-function loadState(){ state={here:'rl041',radius:10,far:true,items:[],fixed:[],hist:{},lang:PROF.lang||'he',a11y:{fs:0,hc:false,ul:false,mo:false}};
+function loadState(){ state={here:'rl041',radius:10,far:true,items:[],fixed:[],watch:[],hist:{},lang:PROF.lang||'he',a11y:{fs:0,hc:false,ul:false,mo:false}};
  const s=store.get(); if(s&&typeof s==='object'){ for(const k of ['here','radius','far','lang','autoLoc','loc'])if(s[k]!==undefined)state[k]=s[k]; state.a11y=Object.assign({fs:0,hc:false,ul:false,mo:false},s.a11y||{}); hydrate(s); }
  if(!STORES.some(s=>s.id===state.here))state.here='rl041'; if(!I18N[state.lang])state.lang='he'; L=state.lang; if(state.loc)setDistances(state.loc[0],state.loc[1]); }
 function save(){ const o={loc:state.loc,here:state.here,radius:state.radius,far:state.far,lang:state.lang,autoLoc:state.autoLoc,a11y:state.a11y,
   items:state.items.map(it=>({code:PRODUCTS[it.pid].code,sid:it.sid,fromSid:it.fromSid,qty:it.qty,got:it.got})),
   fixed:state.fixed.map(f=>f.custom?{custom:f.custom,qty:f.qty}:{code:PRODUCTS[f.pid].code,qty:f.qty}),
-  hist:Object.fromEntries(Object.entries(state.hist).map(([i,n])=>[PRODUCTS[i].code,n]))}; store.set(o); PROF.lang=state.lang; saveProf(); }
+  hist:Object.fromEntries(Object.entries(state.hist).map(([i,n])=>[PRODUCTS[i].code,n])), watch:watchOut()}; store.set(o); PROF.lang=state.lang; saveProf(); }
 let current=null, qty=1;
 
 // ================= HELPERS =================
@@ -973,7 +984,7 @@ function showProduct(pi,noScroll){
      <div class="qty" role="group" aria-label="${esc(T('qty'))}"><button id="qDec" aria-label="${esc(T('dec'))}">−</button><output id="qv" aria-live="polite">${qty}</output><button id="qInc" aria-label="${esc(T('inc'))}">+</button></div>
      ${hereOk?`<button class="btn pri" data-add="${here}">🛒 ${esc(T('addCart'))}</button>`:''}
    </div>`;
-  h+=`<div class="l2" style="padding:.6rem .9rem 0"><button class="lnk" id="toWhere">🔍 ${esc(T('openWhere'))}</button>${fixedBtn(pi,'fxP')}</div>`;
+  h+=`<div class="l2" style="padding:.6rem .9rem 0"><button class="lnk" id="toWhere">🔍 ${esc(T('openWhere'))}</button>${fixedBtn(pi,'fxP')}${watchBtn(pi,'wtP')}</div>`;
   if(best&&hereOk&&best.s.id!==here&&best.price<ph.price){const sv=ph.price-best.price;
     h+=`<p class="sect" style="margin:0">📍 ${esc(T('cheapestIn',{r:kmTxt(R),s:sName(best.s.id),sv:money(sv),pct:Math.round(sv/ph.price*100)}))}<small>${esc(sCity(best.s.id))} · ${esc(kmTxt(best.s.km))}</small></p>`;}
   else if(hereOk) h+=`<p class="sect" style="margin:0">🏆 ${esc(T('hereCheapest',{r:kmTxt(R)}))}<small>${esc(T('hereCheapestSub'))}</small></p>`;
@@ -1002,6 +1013,7 @@ function showProduct(pi,noScroll){
   $('qDec').onclick=()=>chq(-1); $('qInc').onclick=()=>chq(1);
   const dp=$('dealP'); if(dp)dp.onclick=()=>{ qty=+dp.dataset.mq; showProduct(pi,true); const t=$('qv'); announce(T('totalFor',{t:money(priceAt(pi,state.here,qty).price*qty),n:qty})); const b2=$('productCard').querySelector('.btn.pri'); b2&&b2.focus(); };
   $('fxP').onclick=()=>{toggleFixed(pi,qty);showProduct(pi,true);$('fxP').focus();};
+  $('wtP').onclick=()=>{toggleWatch(pi);showProduct(pi,true);$('wtP').focus();};
   $('toWhere').onclick=()=>{ go('where'); $('wq').value=pName(p); showWhere(pi); };
   pc.querySelectorAll('[data-add]').forEach(b=>b.onclick=()=>addTo(b.dataset.add));
   pc.querySelectorAll('[data-open]').forEach(b=>b.onclick=()=>showProduct(+b.dataset.open));
@@ -1011,6 +1023,43 @@ function showProduct(pi,noScroll){
 function chq(d){qty=Math.max(1,Math.min(99,qty+d)); $('qv').textContent=qty; showProduct(current,true); const b=$(d>0?'qInc':'qDec'); b&&b.focus();}
 function inFixed(pi){return state.fixed.some(f=>f.pid===pi);}
 function toggleFixed(pi,q){ const i=state.fixed.findIndex(f=>f.pid===pi); if(i>=0){state.fixed.splice(i,1);announce(T('removedFixed'));} else {state.fixed.push({pid:pi,qty:q||1});announce(T('addedFixed'));} save(); }
+function watchOut(){ return (state.watch||[]).map(w=>({code:PRODUCTS[w.pid].code,base:w.base,pr:w.pr,seen:w.seen,al:w.al||null})); }
+function inWatch(pi){ return (state.watch||[]).some(w=>w.pid===pi); }
+function watchNow(pi){ const r=cheapestIn(pi,state.radius,1); if(!r.length)return null; const b=r[0]; const pr=r.find(x=>x.promo&&(x.promo.mq<=1||x.promo.e<x.reg)); return {price:b.price,sid:b.s.id,promo:pr?{sid:pr.s.id,d:promoBadge(pr)}:null}; }
+function watchStatus(w){ const n=watchNow(w.pid); if(!n)return {k:'na'}; const drop=w.base-n.price;
+  if(drop>=0.3&&drop/w.base>=0.03) return {k:'drop',n,drop}; if(n.promo&&!w.pr) return {k:'promo',n};
+  if(n.price>w.base+0.005) return {k:'up',n}; return {k:'same',n}; }
+function watchMsg(w,st){ const nm=pName(PRODUCTS[w.pid]); if(st.k==='drop')return nm+': '+T('wDrop',{p:money(st.drop),n:money(st.n.price),s:sName(st.n.sid)});
+  if(st.k==='promo')return nm+': '+T('wPromo',{d:st.n.promo.d,s:sName(st.n.promo.sid)}); if(st.k==='up')return nm+': '+T('wUp',{n:money(st.n.price)}); return nm+': '+T('wSame',{n:money(st.n.price),s:sName(st.n.sid)}); }
+function toggleWatch(pi){ const i=state.watch.findIndex(w=>w.pid===pi); if(i>=0){ state.watch.splice(i,1); announce(T('watchRemoved')); }
+  else { const n=watchNow(pi); state.watch.push({pid:pi,base:n?n.price:0,pr:!!(n&&n.promo),seen:Date.now()}); announce(T('watchAdded')); }
+  save(); renderHome(); }
+function watchAck(i){ const w=state.watch[i]; if(!w)return; const n=watchNow(w.pid); if(n){ w.base=n.price; w.pr=!!n.promo; } w.al=null; w.seen=Date.now(); }
+function watchAlerts(){ return (state.watch||[]).map((w,i)=>({w,i,st:watchStatus(w)})).filter(x=>x.st.k==='drop'||x.st.k==='promo'); }
+function checkWatch(notify){ if(!PRODUCTS||!state.watch)return; let fresh=[];
+  for(const w of state.watch){ const st=watchStatus(w); if(st.k==='up'){ w.base=st.n.price; w.pr=!!st.n.promo; continue; } // re-baseline on price rises so the next drop is noticed
+    if(st.k==='promo'&&!st.n.promo){ w.pr=false; }
+    if(st.k==='drop'||st.k==='promo'){ const key=st.k+':'+st.n.price; if(w.al!==key){ w.al=key; fresh.push(watchMsg(w,st)); } }
+    else if(!(st.n&&st.n.promo)) w.pr=false; }
+  save(); renderHome();
+  if(notify&&fresh.length){ announce(T('alertsH',{n:fresh.length}));
+    try{ if('Notification' in window&&Notification.permission==='granted'){ const body=fresh.slice(0,4).join('\n'); const show=()=>new Notification(T('notifTitle'),{body,tag:'salchacham-watch',lang:L,dir:L==='he'?'rtl':'ltr'});
+      if(navigator.serviceWorker&&navigator.serviceWorker.getRegistration){ navigator.serviceWorker.getRegistration().then(r=>r?r.showNotification(T('notifTitle'),{body,tag:'salchacham-watch'}):show()).catch(()=>{try{show();}catch(e){}}); } else show(); } }catch(e){} } }
+function watchBtn(pi,id){ const on=inWatch(pi); return `<button class="addto watch" id="${id}" aria-pressed="${on}">${esc(on?T('watchOn'):T('watchOff'))}</button>`; }
+function watchHtml(){ if(!state.watch.length)return ''; const np='Notification' in window;
+  let h=`<section class="lst" aria-labelledby="wtH"><div class="lhead"><h3 id="wtH">${esc(T('watchH'))}</h3><div class="m">${esc(T('items',{n:state.watch.length}))}</div></div><p class="hint" style="padding:.5rem .9rem 0;margin:0">${esc(T('watchHint'))}</p><ul class="items">`;
+  state.watch.forEach((w,i)=>{ const p=PRODUCTS[w.pid], st=watchStatus(w), hot=st.k==='drop'||st.k==='promo';
+    h+=`<li class="li${hot?' hot':''}"><span style="flex:1;min-width:0"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))}<small>${esc(pMeta(p))}</small><small class="${hot?'wst hotx':'wst'}">${esc(st.k==='na'?T('notHere'):watchMsg(w,st).split(': ').slice(1).join(': '))}</small></span>
+      ${hot?`<button class="lnk" data-wack="${i}">${esc(T('wSeen'))}</button>`:''}<button class="lnk" data-wopen="${w.pid}">🔍<span class="sr-only"> ${esc(T('openWhere'))} – ${esc(pName(p))}</span></button>
+      <button class="x" data-wrm="${i}" aria-label="${esc(T('remove',{n:pName(p)}))}">✕</button></li>`; });
+  h+='</ul>'; if(np) h+=`<div style="padding:.6rem .9rem">${Notification.permission==='granted'?`<p class="hint" style="margin:0">${esc(T('notifyOn'))}</p>`:`<button class="btn" id="notifyBtn">${esc(T('notifyAsk'))}</button><p id="notifyMsg" class="hint" role="status" style="margin:.3rem 0 0"></p>`}</div>`;
+  return h+'</section>'; }
+function wireWatch(){ const el=$('listsBody');
+  el.querySelectorAll('[data-wack]').forEach(b=>b.onclick=()=>{ watchAck(+b.dataset.wack); save(); renderHome(); renderLists(); const h=$('wtH'); if(h){h.setAttribute('tabindex','-1');h.focus();} });
+  el.querySelectorAll('[data-wrm]').forEach(b=>b.onclick=()=>{ state.watch.splice(+b.dataset.wrm,1); save(); renderHome(); renderLists(); announce(T('watchRemoved')); const h=$('wtH')||$('fxH'); if(h){h.setAttribute('tabindex','-1');h.focus();} });
+  el.querySelectorAll('[data-wopen]').forEach(b=>b.onclick=()=>{ const pi=+b.dataset.wopen; go('where'); $('wq').value=pName(PRODUCTS[pi]); showWhere(pi); });
+  el.querySelectorAll('[data-watch]').forEach(b=>b.onclick=()=>{ const pi=+b.dataset.watch; toggleWatch(pi); renderLists(); const n=$('listsBody').querySelector(`[data-watch="${pi}"]`); n&&n.focus(); });
+  const nb=$('notifyBtn'); if(nb) nb.onclick=async()=>{ try{ const r=await Notification.requestPermission(); if(r==='granted'){ renderLists(); announce(T('notifyOn')); } else $('notifyMsg').textContent=T('notifyNo'); }catch(e){ $('notifyMsg').textContent=T('notifyNo'); } }; }
 function fixedBtn(pi,id){ const on=inFixed(pi); return `<button class="addto" id="${id}" aria-pressed="${on}">${esc(on?T('inFixed'):T('toFixed'))}</button>`; }
 function asideInfo(pi,q){ // is a cheaper store nearby worth putting this item aside?
   const here=state.here, h=priceAt(pi,here,q); if(!h)return null; const b=cheapestIn(pi,state.radius,q).find(r=>r.s.id!==here); if(!b)return null;
@@ -1063,7 +1112,7 @@ function showWhere(pi,noScroll){
       <button class="addto" data-add="${b.s.id}" aria-pressed="${inList.some(it=>it.sid===b.s.id)}">${inList.some(it=>it.sid===b.s.id)?'✔ '+esc(T('inList')):'+ '+esc(T('addListOf',{s:sName(b.s.id)}))}<span class="sr-only"> – ${money(b.price)}</span></button>
       <a class="navl" href="${wazeUrl(b.s.id)}" target="_blank" rel="noopener">🧭 Waze<span class="sr-only"> – ${esc(sFull(b.s.id))}</span></a>
       <a class="navl" href="${mapsUrl(b.s.id)}" target="_blank" rel="noopener">🗺️ ${esc(T('maps'))}<span class="sr-only"> Google – ${esc(sFull(b.s.id))}</span></a>
-      ${fixedBtn(pi,'fxW')}
+      ${fixedBtn(pi,'fxW')}${watchBtn(pi,'wtW')}
     </div></div>`;
   const far=STORES.filter(s=>s.km>R&&s.id!==here&&priceAt(pi,s.id)).map(s=>({s,...priceAt(pi,s.id,wQty)})).sort((a,c)=>a.price-c.price)[0];
   if(state.far&&far){const gap=b.price-far.price,pct=gap/b.price; if(pct>=0.12&&gap*wQty>=3){const done=inList.some(it=>it.sid===far.s.id);
@@ -1084,6 +1133,7 @@ function showWhere(pi,noScroll){
   $('wInc').onclick=()=>{wQty=Math.min(99,wQty+1);showWhere(pi,true);$('wInc').focus();};
   wc.querySelectorAll('[data-add]').forEach(x=>x.onclick=()=>{ const q0=qty; qty=wQty; addTo(x.dataset.add,pi,true); qty=q0; });
   $('fxW').onclick=()=>{toggleFixed(pi,wQty);showWhere(pi,true);$('fxW').focus();};
+  $('wtW').onclick=()=>{toggleWatch(pi);showWhere(pi,true);$('wtW').focus();};
   $('wBack').onclick=()=>{ wCur=null; wc.innerHTML=''; renderWhereResults(); $('wq').focus(); };
   if(!noScroll){ $('wTitle').focus({preventScroll:true}); wc.scrollIntoView({behavior:state.a11y.mo?'auto':'smooth',block:'start'}); announce(T('cheapestAt',{s:sFull(b.s.id),p:money(b.price)}),false); }
 }
@@ -1093,13 +1143,15 @@ function pp(pi,sid,q){const a=priceAt(pi,sid,q);return a?a.price:null;}
 function itemSaving(it){const f=pp(it.pid,it.fromSid,it.qty),t=pp(it.pid,it.sid,it.qty); return (f===null||t===null)?0:(f-t)*it.qty;}
 function totals(){let spend=0,sv=0,ifHere=0;state.items.forEach(it=>{const t=pp(it.pid,it.sid,it.qty)||0, f=pp(it.pid,it.fromSid,it.qty); spend+=t*it.qty; sv+=itemSaving(it); ifHere+=(f===null?t:f)*it.qty;});return{spend,sv,ifHere};}
 function renderHome(){ const el=$('homeCard'); if(!el||!PRODUCTS)return; const FXn=state.fixed.filter(f=>!f.custom).length;
-  let h=`<h2 id="homeH" class="homeh">${esc(T('homeH'))}</h2>`;
+  let h=`<h2 id="homeH" class="homeh">${esc(T('homeH'))}</h2>`; const AL=watchAlerts();
+  if(AL.length) h+=`<div class="walert" role="status"><p style="margin:0 0 .3rem;font-weight:800">${esc(T('alertsH',{n:AL.length}))}</p><ul style="margin:0 0 .4rem;padding-inline-start:1.1rem">${AL.slice(0,3).map(x=>`<li>${esc(watchMsg(x.w,x.st))}</li>`).join('')}</ul><button class="btn" id="homeAl">${esc(T('alertsOpen'))}</button></div>`;
   if(!FXn){ h+=`<p style="margin:.2rem 0 .5rem">${esc(T('homeEmpty'))}</p><button class="btn" id="homeGo">${esc(T('homeBuild'))}</button>`; }
   else { const {tot}=basketCalc(), b=tot[0], w=tot.filter(x=>x.miss===b.miss).pop();
     h+=`<p style="margin:.2rem 0 0;font-weight:700">${esc(T('homeBest',{n:FXn,s:sFull(b.s.id),t:money(b.t)}))} <span class="hint">· ${esc(kmTxt(b.s.km))}</span> ${b.miss?`<span class="hint">${esc(T('homeMiss',{n:b.miss}))}</span>`:''}</p>
      ${w&&w.s.id!==b.s.id&&w.t-b.t>=1?`<p style="margin:.1rem 0 .5rem;color:var(--brand-d);font-weight:700">${esc(T('homeSave',{p:money(w.t-b.t),w:sName(w.s.id)===sName(b.s.id)?sFull(w.s.id):sName(w.s.id)}))}</p>`:'<div style="height:.4rem"></div>'}
      <button class="btn pri" id="homeGo">${esc(T('homeOpen'))}</button>`; }
-  el.innerHTML=h; $('homeGo').onclick=()=>{ go('lists'); if(FXn){basketOpen=true;} renderLists(); const t=FXn?$('basketRes'):$('fxq'); if(t){ if(t.id==='basketRes'){t.setAttribute('tabindex','-1');} t.focus(); t.scrollIntoView({block:'start'});} }; }
+  el.innerHTML=h; const ha=$('homeAl'); if(ha)ha.onclick=()=>{ go('lists'); renderLists(); const t=$('wtH'); if(t){t.setAttribute('tabindex','-1');t.focus();t.scrollIntoView({block:'start'});} };
+  $('homeGo').onclick=()=>{ go('lists'); if(FXn){basketOpen=true;} renderLists(); const t=FXn?$('basketRes'):$('fxq'); if(t){ if(t.id==='basketRes'){t.setAttribute('tabindex','-1');} t.focus(); t.scrollIntoView({block:'start'});} }; }
 function renderBadge(){ try{renderHome();}catch(e){}const n=state.items.length,c=$('cnt');c.textContent=n;c.classList.toggle('hidden',!n); $('saveTotal').textContent=money(Math.max(0,totals().sv));
   $('cntSr').textContent=n?' ('+n+')':'';}
 let confirmOpen=false, basketOpen=false, finOpen=false;
@@ -1157,8 +1209,8 @@ function basketHtml(){ const {tot,split,FX}=basketCalc(), b=tot[0], w=tot[tot.le
 function makeListsFrom(assign){ state.fixed.filter(f=>!f.custom).forEach((f,i)=>{ let sid=assign(i); if(!sid||pp(f.pid,sid,f.qty)===null){ const c=cheapestIn(f.pid,state.radius)[0]; if(!c)return; sid=c.s.id; } const ex=state.items.find(it=>it.pid===f.pid&&it.sid===sid); if(ex)ex.qty+=f.qty; else state.items.push({pid:f.pid,sid,fromSid:state.here,qty:f.qty,got:false}); state.hist[f.pid]=(state.hist[f.pid]||0)+1; });
   save(); renderBadge(); basketOpen=false; renderLists(); announce(T('listsMade')); const h=$('shopH'); h&&h.focus(); }
 function renderLists(){
-  const el=$('listsBody'); let pre=fixedHtml();
-  if(!state.items.length){el.innerHTML=pre+`<p class="empty"><span aria-hidden="true" style="font-size:2rem">🧾</span><br>${esc(T('emptyLists'))}</p>`+shareHtml(); wireFixed(); wireShare(); return;}
+  const el=$('listsBody'); let pre=fixedHtml()+watchHtml();
+  if(!state.items.length){el.innerHTML=pre+`<p class="empty"><span aria-hidden="true" style="font-size:2rem">🧾</span><br>${esc(T('emptyLists'))}</p>`+shareHtml(); wireFixed(); wireShare(); wireWatch(); return;}
   const Tt=totals(), groups={}; state.items.forEach((it,ix)=>{(groups[it.sid]=groups[it.sid]||[]).push([it,ix]);});
   const order=Object.keys(groups).sort((a,b)=>a===state.here?-1:b===state.here?1:storeObj(a).km-storeObj(b).km);
   let h=pre+`<h3 id="shopH" tabindex="-1" style="margin:1.1rem 0 0;font-size:1.05rem">🛒 ${esc(T('shopH'))}</h3><div class="tot"><p style="margin:0;font-size:.85rem;opacity:.9">${esc(T('ifHere',{p:money(Tt.ifHere)}))}</p><p style="margin:.2rem 0 0">${esc(T('splitPay',{p:money(Tt.spend)}))}</p><p class="big" style="margin:0">${money(Math.max(0,Tt.sv))}</p><p style="margin:0;font-size:.8rem;opacity:.85">${esc(T('storesItems',{s:order.length,i:state.items.length}))}</p></div>`;
@@ -1167,6 +1219,7 @@ function renderLists(){
     g.forEach(([it,ix])=>{const p=PRODUCTS[it.pid],pr=pp(it.pid,sid,it.qty)||0,isv=itemSaving(it);
       h+=`<li class="li ${it.got?'got':''}"><label><input type="checkbox" data-got="${ix}" ${it.got?'checked':''} aria-label="${esc(T('got',{n:pName(p)}))}"><span><span class="nm"><span aria-hidden="true">${p.emoji}</span> ${esc(pName(p))} ×${it.qty}</span><small>${esc(pMeta(p))}${it.fromSid!==sid?' · '+esc(T('scannedAt',{s:sName(it.fromSid)})):''}</small></span></label>
         ${isH?(()=>{const ai=asideInfo(it.pid,it.qty); return ai?`<span class="aside">${esc(T('asideTag',{s:sName(ai.s.id),p:money(ai.sv)}))}</span>`:'';})():''}
+        <button class="wsm" data-watch="${it.pid}" aria-pressed="${inWatch(it.pid)}"><span aria-hidden="true">🔔</span> ${esc(inWatch(it.pid)?T('watchShortOn'):T('watchShort'))}<span class="sr-only"> – ${esc(pName(p))}</span></button>
         <div class="p">${money(pr*it.qty)}${isv>0.005?`<small>${esc(T('saved',{p:money(isv)}))}</small>`:''}${(()=>{const pa=priceAt(it.pid,sid,it.qty); return pa&&pa.promo&&pa.promo.mq>1?`<small class="pn">${esc(pa.promo.applies?T('perUnitInDeal',{n:pa.promo.mq,t:money(pa.promo.t)}):T('dealHintList',{n:pa.promo.mq,t:money(pa.promo.t)}))}</small>`:'';})()}</div>
         <button class="x" data-rm="${ix}" aria-label="${esc(T('remove',{n:pName(p)}))}">✕</button></li>`;});
     h+='</ul>';
@@ -1239,7 +1292,7 @@ function wireFixed(){ const el=$('listsBody');
 }
 function wireCopySite(){ $('listsBody').querySelectorAll('[data-copysite]').forEach(b=>b.onclick=async()=>{ const t=b.dataset.copysite.split(',').filter(Boolean).map(i=>{const it=state.items.find(x=>x.pid===+i)||state.fixed.find(x=>x.pid===+i); return PRODUCTS[+i].name.he+(it&&it.qty>1?' ×'+it.qty:'');}).join('\n');
   try{ await navigator.clipboard.writeText(t); announce(T('copied')); }catch(e){ announce(T('copyFail')); } }); }
-function wireFinish(){ wireCopySite(); const fb=$('finBtn'); if(fb)fb.onclick=()=>{finOpen=!finOpen;renderLists();$('finBtn').focus();};
+function wireFinish(){ wireCopySite(); wireWatch(); const fb=$('finBtn'); if(fb)fb.onclick=()=>{finOpen=!finOpen;renderLists();$('finBtn').focus();};
   const fa=$('finAll'); if(fa)fa.onclick=()=>{finOpen=false;renderLists();announce(T('keptAll'));};
   const fs=$('finSplit'); if(fs)fs.onclick=()=>{ const sid=fs.dataset.s, f=finishCalc(); for(const it of f.best.moved){ it.sid=sid; } const m={}; state.items=state.items.filter(it=>{const k=it.pid+'|'+it.sid;if(m[k]){m[k].qty+=it.qty;return false;}m[k]=it;return true;}); save(); renderBadge(); finOpen=false; renderLists(); announce(T('movedAside',{s:sName(sid)})); const h=$('lh-'+sid); if(h){h.setAttribute('tabindex','-1');h.focus();} }; }
 function onlineHtml(sid,ids){ const s=storeObj(sid), o=ONLINE[s.chain];
@@ -1255,8 +1308,8 @@ async function copyLists(){const g={};state.items.forEach(it=>{(g[it.sid]=g[it.s
 // ================= UPDATE PRICES =================
 async function updatePrices(){ const b=$('updBtn'); if(b)b.disabled=true;
   try{ const r=await fetch('data.json?'+Date.now(),{cache:'no-store'}); if(!r.ok)throw 0; const D=await r.json(); if(!D||!D.P)throw 0;
-    const keep={items:state.items.map(it=>({...it,code:PRODUCTS[it.pid].code})),fixed:state.fixed.map(f=>f.custom?f:{code:PRODUCTS[f.pid].code,qty:f.qty}),hist:Object.fromEntries(Object.entries(state.hist).map(([i,n])=>[PRODUCTS[i].code,n]))};
-    loadData(D); NN=null; _ex=null; hydrate(keep); if(state.loc)setDistances(state.loc[0],state.loc[1]); save(); applyLang(); announce(T('updOk',{t:fmtTime(DATA_GEN)}));
+    const keep={items:state.items.map(it=>({...it,code:PRODUCTS[it.pid].code})),fixed:state.fixed.map(f=>f.custom?f:{code:PRODUCTS[f.pid].code,qty:f.qty}),hist:Object.fromEntries(Object.entries(state.hist).map(([i,n])=>[PRODUCTS[i].code,n])),watch:watchOut()};
+    loadData(D); NN=null; _ex=null; hydrate(keep); if(state.loc)setDistances(state.loc[0],state.loc[1]); save(); applyLang(); announce(T('updOk',{t:fmtTime(DATA_GEN)})); checkWatch(true);
   }catch(e){ announce(T('updFail',{t:fmtTime(DATA_GEN)})); }
   finally{ const b2=$('updBtn'); if(b2)b2.disabled=false; } }
 
@@ -1305,7 +1358,7 @@ $('impAdd').onclick=()=>{ const o=pendingShare||{};
 $('impCancel').onclick=()=>{ $('importDlg').classList.add('hidden'); pendingShare=null; };
 
 // ================= BOOT =================
-function afterLogin(){ if(state.autoLoc)locate(true); checkShare(); }
+function afterLogin(){ if(state.autoLoc)locate(true); checkShare(); checkWatch(true); }
 async function boot(){
   if(!STORES.length){ $('loadScr').classList.remove('hidden'); $('loadTxt').textContent=(I18N[PROF.lang]||I18N.he).loading;
     try{ const r=await fetch('data.json?'+Date.now(),{cache:'no-store'}); const D=await r.json(); loadData(D); }
